@@ -1,0 +1,23 @@
+
+<mat-card class="mat-card-principal">
+  <mat-card-content>
+    <mat-form-field appearance="fill" class="mat-form-field" >
+      <input matInput [(ngModel)]="disciplinaTratamento.nome" placeholder="Digite o nome">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mat-form-field" >
+      <input matInput [(ngModel)]="disciplinaTratamento.semestre" placeholder="Digite o semestre">
+    </mat-form-field>
+
+
+    <mat-form-field class="mat-form-field">
+      <mat-label>Professores</mat-label>
+      <mat-select  [(value)]="selectProfessor">
+        <mat-option *ngFor="let professor of professores" [value]="professor">{{professor.nome}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="cadastrar()">Cadastrar</button>
+  </mat-card-content>
+
+
+</mat-card>

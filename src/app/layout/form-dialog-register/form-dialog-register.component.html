@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-form-field class="form-field">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="aluno.email" >
+  </mat-form-field>
+  <mat-form-field class="form-field">
+    <mat-label>Nome</mat-label>
+    <input matInput type="text" [(ngModel)]="aluno.nome">
+  </mat-form-field>
+  <mat-form-field class="form-field">
+    <mat-label>Password</mat-label>
+    <input matInput type="text" [(ngModel)]="aluno.matricula">
+  </mat-form-field>
+  <mat-form-field class="form-field">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" [(ngModel)]="aluno.senha">
+  </mat-form-field>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="cancelar()">Entrar!</button>
+  </mat-card-actions>
+</mat-card>

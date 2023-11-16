@@ -1,0 +1,42 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-container {
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #555;
+}
+
+.mat-sidenav-container{
+  height:calc(205vh - 115vh);
+}
+.mat-sidenav{
+  width: 325px;
+  background-color: #ffffff;
+}
+
+.buttonSideNav{
+  width: 200px;
+  border: transparent;
+  border-radius: 10px;
+  margin: 10px  ;
+}
+.painelSideNav
+{
+  border: transparent;
+
+}
+.side-nav-card{
+  font-size: medium;
+  min-width: 250px;
+  width: 250px;
+  max-width: 250px;
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+  margin: 10px;
+  border: transparent;
+  border-radius: 10px;
+}

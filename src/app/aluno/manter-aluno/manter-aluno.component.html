@@ -1,0 +1,20 @@
+
+<mat-card class="mat-card-principal">
+  <mat-card-content>
+    <mat-form-field appearance="fill" class="mat-form-field" >
+      <input matInput [(ngModel)]="aluno.email" placeholder="Digite o email">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mat-form-field" >
+      <input matInput [(ngModel)]="aluno.nome" placeholder="Digite o nome">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mat-form-field" >
+      <input matInput [(ngModel)]="aluno.senha" placeholder="Digite o senha">
+    </mat-form-field>
+
+
+
+    <button mat-raised-button color="primary" (click)="enviarAluno()">Cadastrar</button>
+  </mat-card-content>
+
+
+</mat-card>

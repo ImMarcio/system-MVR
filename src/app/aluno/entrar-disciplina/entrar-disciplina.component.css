@@ -1,0 +1,9 @@
+.mat-card-principal{
+  max-width: 400px;
+  margin: 100px;
+
+}
+.mat-card-principal button{
+  border-radius: 10px;
+
+}

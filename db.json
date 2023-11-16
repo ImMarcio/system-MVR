@@ -1,0 +1,89 @@
+{
+  "alunos": [
+    {
+      "id": 20,
+      "email": "gmail",
+      "senha": "1234",
+      "nome": "silvera",
+      "matricula": "40028922",
+      "turmasMatriculado": []
+    },
+    {
+      "id": 2,
+      "email": "fastin",
+      "senha": "1234",
+      "nome": "chama",
+      "matricula": "1234",
+      "turmasMatriculado": []
+    }
+  ],
+  "disciplinas": [
+    {
+      "name": "Add your name in the body",
+      "alunosMatriculados": [
+        {
+          "id": 20,
+          "email": "gmail",
+          "senha": "1234",
+          "nome": "silvera",
+          "matricula": "40028922",
+          "turmasMatriculado": []
+        }
+      ],
+      "id": 1
+    },
+    {
+      "professorResponsavel": {
+        "email": "",
+        "senha": "",
+        "cpf": "",
+        "nome": "Senior",
+        "turmasEncarregadas": []
+      },
+      "alunosMatriculados": [],
+      "id": 2,
+      "nome": "pbo",
+      "semestre": "222.2"
+    },
+    {
+      "professorResponsavel": {
+        "turmasEncarregadas": [],
+        "cpf": "12345667",
+        "nome": "Fausto",
+        "senha": "1234",
+        "email": "gmail.com"
+      },
+      "alunosMatriculados": [],
+      "id": 3,
+      "nome": "test",
+      "semestre": "2002"
+    },
+    {
+      "professorResponsavel": {
+        "turmasEncarregadas": [],
+        "cpf": "12345667",
+        "nome": "Fausto",
+        "senha": "1234",
+        "email": "gmail.com"
+      },
+      "alunosMatriculados": [],
+      "id": 4,
+      "nome": "Nova disciplina",
+      "semestre": "1234"
+    }
+  ],
+  "professores": [
+    {
+      "nome": "Fausto",
+      "cpf": "12345667",
+      "senha": "1234",
+      "email": "gmail.com"
+    },
+    {
+      "nome": "Guga",
+      "cpf": "12345667",
+      "senha": "1234",
+      "email": "gmail.com"
+    }
+  ]
+}

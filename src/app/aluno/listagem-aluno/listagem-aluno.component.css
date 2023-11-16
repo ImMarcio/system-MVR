@@ -1,0 +1,30 @@
+editClass{
+  background-color: forestgreen;
+}
+
+
+.ngfor-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card-simples{
+  max-width: 300px;
+  max-height: 300px;
+  background-color: aliceblue;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+
+
+
+.mat-card-simples {
+  width: 80%; /* Largura desejada */
+  margin-bottom: 10px; /* Espaço entre os cartões simples */
+}
+
+

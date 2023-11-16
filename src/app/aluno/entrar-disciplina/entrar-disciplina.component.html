@@ -1,0 +1,12 @@
+
+<mat-card class="mat-card-principal">
+<mat-form-field class="mat-form-field">
+  <mat-label>Disciplinas</mat-label>
+  <mat-select  [(value)]="selectDisciplina">
+    <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina">{{disciplina.nome}}</mat-option>
+  </mat-select>
+</mat-form-field>
+  <mat-card-actions>
+    <button class="primary" mat-button (click)="entrarDisciplina()"> Se Inscrever</button>
+  </mat-card-actions>
+</mat-card>

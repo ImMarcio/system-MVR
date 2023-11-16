@@ -1,0 +1,12 @@
+<div class="ngfor-container">
+  <mat-card class="mat-card-simples" *ngFor="let disciplina of disciplinas">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>school</mat-icon>{{disciplina.nome}} - {{disciplina.professorResponsavel?.nome}}
+      </mat-card-title>
+      <mat-card-subtitle *ngIf="disciplina.id">{{disciplina.nome}}-{{disciplina.semestre}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut molestie urna.
+      Donec a elit ac dui gravida facilisis. Phasellus elementum nulla tellus,</mat-card-content>
+  </mat-card>
+</div>

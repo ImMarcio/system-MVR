@@ -1,0 +1,13 @@
+<div class="ngfor-container">
+  <mat-card class="mat-card-simples" *ngFor="let aluno of alunos">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>school</mat-icon>{{aluno.nome}} - {{aluno.email}}
+        <button (click)="excluirAluno(aluno)"><mat-icon>delete</mat-icon></button>
+      </mat-card-title>
+      <mat-card-subtitle >{{aluno.nome}}-{{aluno.senha}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>Deu certo :) dolor sit amet, consectetur adipiscing elit. Duis ut molestie urna.
+      Donec a elit ac dui gravida facilisis. Phasellus elementum nulla tellus,</mat-card-content>
+  </mat-card>
+</div>
