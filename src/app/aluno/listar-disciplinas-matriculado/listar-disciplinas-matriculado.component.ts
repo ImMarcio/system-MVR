@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ALUNOMAIN} from "../../shared/ALUNO-MAIN";
+
 import {AuthService} from "../../layout/login/auth.service";
 import {Observable, Subscription} from "rxjs";
 import {Aluno} from "../../shared/aluno";

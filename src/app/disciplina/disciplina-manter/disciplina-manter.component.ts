@@ -13,7 +13,7 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 })
 export class DisciplinaManterComponent {
 
-  disciplinaTratamento: Disciplina = new Disciplina(0, "", "");
+  disciplinaTratamento: Disciplina = new Disciplina(0, "", "",'');
 
   disciplinas : Disciplina[] | undefined;
   professores : Professor[] | undefined;
@@ -26,8 +26,8 @@ export class DisciplinaManterComponent {
   cadastrar():void{
 
 
-    this.disciplinaTratamento.professorResponsavel = this.selectProfessor;
-    this.selectProfessor?.turmasEncarregadas.push(this.disciplinaTratamento);
+     this.disciplinaTratamento.professorResponsavel = this.selectProfessor;
+    // this.selectProfessor?.turmasEncarregadas.push(this.disciplinaTratamento);
 
     this._disciplinaService.postDisciplina(this.disciplinaTratamento).subscribe(
       (response) => {
@@ -37,7 +37,7 @@ export class DisciplinaManterComponent {
         console.error('Error ao criar recurso', error);
       }
     );
-    this.disciplinaTratamento = new Disciplina(0,'','');
+    this.disciplinaTratamento = new Disciplina(0,'','','');
 
   }
 
@@ -51,7 +51,8 @@ export class DisciplinaManterComponent {
               return new Disciplina(
                 item.id,
                 item.nome,
-                item.semestre
+                item.semestre,
+                item.descricao
               )
             }
           )

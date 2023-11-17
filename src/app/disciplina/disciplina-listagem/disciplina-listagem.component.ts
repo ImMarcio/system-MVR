@@ -26,7 +26,8 @@ constructor(private _disciplinaService:DisciplinaServiceService) {
               return new Disciplina(
                 item.id,
                 item.nome,
-                item.semestre
+                item.semestre,
+                item.descricao
               )
             }
           )

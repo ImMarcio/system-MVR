@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 import {Disciplina} from "../../shared/disciplina";
 
-import {ALUNOMAIN} from "../../shared/ALUNO-MAIN";
+
 import {DisciplinaServiceService} from "../../disciplina/disciplina-service.service";
 import {AlunoLogadoService} from "../../layout/login/aluno-logado.service";
 import {Aluno} from "../../shared/aluno";
@@ -16,8 +16,9 @@ import {AlunoCrudService} from "../aluno-crud.service";
 })
 export class EntrarDisciplinaComponent {
   disciplinas : Disciplina[] | undefined;
-  selectDisciplina: Disciplina = new Disciplina(0,'','') ;
+  selectDisciplina: Disciplina = new Disciplina(0,'','','') ;
   aluno :Aluno = new Aluno(0,'','','','');
+  messageBox: any;
 
   constructor(private _disciplinaService:DisciplinaServiceService,private _alunoCrudService:AlunoCrudService, private alunoLogadoService:AlunoLogadoService) {
     this.aluno = this.alunoLogadoService.getCurrentStudent();
@@ -28,8 +29,11 @@ export class EntrarDisciplinaComponent {
     this._alunoCrudService.putAluno(this.aluno).subscribe();
      this.selectDisciplina.alunosMatriculados.push(this.aluno);
      this._disciplinaService.getDisciplinaById(this.selectDisciplina.id).subscribe();
-
-    console.log(this.aluno);
+     if(this.aluno.email.length >2){
+      this.messageBox = "Aluno matriculado com Sucesso";
+     }else{
+       this.messageBox = "Faça o login antes de se matricular";
+     }
   }
   ngOnInit(){
     this._disciplinaService.getDisciplinas()
@@ -40,7 +44,8 @@ export class EntrarDisciplinaComponent {
                     return new Disciplina(
                         item.id,
                         item.nome,
-                        item.semestre
+                        item.semestre,
+                        item.descricao
                     )
                   }
               )

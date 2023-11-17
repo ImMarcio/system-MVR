@@ -6,8 +6,7 @@
       </mat-card-title>
       <mat-card-subtitle *ngIf="disciplina.id">{{disciplina.semestre}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut molestie urna.
-      Donec a elit ac dui gravida facilisis. Phasellus elementum nulla tellus,</mat-card-content>
+    <mat-card-content>{{disciplina.descricao}}</mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="excluirDisciplina(disciplina)"> <mat-icon>delete</mat-icon> </button>
     </mat-card-actions>

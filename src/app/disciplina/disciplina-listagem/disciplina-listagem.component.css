@@ -16,10 +16,10 @@ editClass{
   max-width: 300px;
   max-height: 300px;
   color: #ffffff;
-  margin-top: 10px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
-  background-image: url("https://static.vecteezy.com/ti/vetor-gratis/t2/5948321-back-to-school-banner-com-linha-desenhada-mao-icones-arte-da-educacao-ciencia-objetos-e-material-escritorio-material-escolar-conceito-da-educacao-fundo-gratis-vetor.jpg");
+  background-color: #3F76B5;
 }
 
 .ngfor-container{

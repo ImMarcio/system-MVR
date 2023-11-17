@@ -7,6 +7,9 @@
     <mat-form-field appearance="fill" class="mat-form-field" >
       <input matInput [(ngModel)]="disciplinaTratamento.semestre" placeholder="Digite o semestre">
     </mat-form-field>
+    <mat-form-field appearance="fill" class="mat-form-field" >
+      <input matInput [(ngModel)]="disciplinaTratamento.descricao" placeholder="Descreva a disciplina">
+    </mat-form-field>
 
 
     <mat-form-field class="mat-form-field">
@@ -20,6 +23,6 @@
     <button mat-raised-button color="primary" (click)="cadastrar()">Cadastrar</button>
     </mat-card-actions>
   </mat-card-content>
-{{selectProfessor.nome}}
+
 
 </mat-card>

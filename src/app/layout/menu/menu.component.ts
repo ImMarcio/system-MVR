@@ -5,7 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 
 
 import {Disciplina} from "../../shared/disciplina";
-import {ALUNOMAIN} from "../../shared/ALUNO-MAIN";
+
 
 
 import {DisciplinaServiceService} from "../../disciplina/disciplina-service.service";
@@ -42,7 +42,8 @@ constructor(private _disciplinaService:DisciplinaServiceService,private _alunoSe
               return new Disciplina(
                 item.id,
                 item.nome,
-                item.semestre
+                item.semestre,
+                item.descricao
               )
             }
           )

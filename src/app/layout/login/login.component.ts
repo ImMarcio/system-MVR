@@ -4,10 +4,11 @@ import {FormDialogComponent} from "../form-dialog/form-dialog.component";
 
 
 import {AuthService} from "./auth.service";
-import {ALUNOMAIN} from "../../shared/ALUNO-MAIN";
+
 import {Aluno} from "../../shared/aluno";
 import {HttpClient} from "@angular/common/http";
 import {FormDialogRegisterComponent} from "../form-dialog-register/form-dialog-register.component";
+import {AlunoLogadoService} from "./aluno-logado.service";
 
 @Component({
   selector: 'app-login',
@@ -17,10 +18,10 @@ import {FormDialogRegisterComponent} from "../form-dialog-register/form-dialog-r
 export class LoginComponent {
   private mostrarLogin:boolean = true;
 
-  alunoPrincipal:Aluno = ALUNOMAIN;
+  alunoPrincipal:Aluno;
 
-  constructor(public dialog: MatDialog, private authService: AuthService, private _HttpClient:HttpClient) {
-
+  constructor(public dialog: MatDialog, private authService: AuthService, private _HttpClient:HttpClient, private alunoLogadoService:AlunoLogadoService) {
+  this.alunoPrincipal = this.alunoLogadoService.getCurrentStudent()
   }
   ngOnOnit(){
 

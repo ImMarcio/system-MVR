@@ -95,6 +95,20 @@
           "id": 8,
           "nome": "Essa é o teste de vinculo",
           "semestre": "20002.2"
+        },
+        {
+          "professorResponsavel": {
+            "turmasEncarregadas": [],
+            "id": 0,
+            "cpf": "",
+            "nome": "",
+            "senha": "",
+            "email": ""
+          },
+          "alunosMatriculados": [],
+          "id": 4,
+          "nome": "Programção Distribuida",
+          "semestre": "2024.1"
         }
       ]
     }
@@ -110,51 +124,94 @@
         "email": ""
       },
       "alunosMatriculados": [],
-      "id": 1,
-      "nome": "PW!",
-      "semestre": "2022"
+      "id": 6,
+      "nome": "APE",
+      "semestre": "2022.1",
+      "descricao": "Definições. Linguagem algorítmica. Variáveis e expressões aritméticas. Entrada e saída. Estruturas de controle sequencial, condicional e repetitiva. Vetores e matrizes. Processamento de cadeias de caracteres. Modularização. Mecanismos de passagem de parâmetros. Linguagem de programação estruturada."
     },
     {
       "professorResponsavel": {
         "turmasEncarregadas": [],
-        "id": 0,
-        "cpf": "",
-        "nome": "",
-        "senha": "",
-        "email": ""
+        "cpf": "12345667",
+        "nome": "Maxwell Anderson Ielpo do Amaral",
+        "senha": "1234",
+        "email": "Maxwell@gmail.com"
       },
       "alunosMatriculados": [],
-      "id": 2,
-      "nome": "POB",
-      "semestre": "2023"
+      "id": 8,
+      "nome": "Análise e Projeto de Sistemas",
+      "semestre": "2023.2",
+      "descricao": "Noções de Engenharia de Software; Processos/Metodologias de desenvolvimento de software prescritivas e ágeis; Projetos de software: linguagem visual de modelagem, negócio, requisitos, análise e projeto de sistemas"
     },
     {
       "professorResponsavel": {
         "turmasEncarregadas": [],
-        "id": 0,
-        "cpf": "",
-        "nome": "",
-        "senha": "",
-        "email": ""
+        "cpf": "12345667",
+        "nome": "Giovanni Loureiro Cabral de Melo",
+        "senha": "1234",
+        "email": "Giovanni@gmail.com"
       },
       "alunosMatriculados": [],
-      "id": 3,
-      "nome": "POO",
-      "semestre": "2022.2"
+      "id": 9,
+      "nome": " Legislação Social ",
+      "semestre": "2023.2",
+      "descricao": "Noções básicas de direito. A política Nacional de Informática. Propriedade Intelectual. Direito Autoral. Proteção legal do hardware e do software. Regulamentação da profissão. Informática e a Privacidade. O direito aos dados (habeas data). Introdução ao Direito do Trabalho. Introdução ao Direito Previdenciário."
     },
     {
       "professorResponsavel": {
         "turmasEncarregadas": [],
-        "id": 0,
-        "cpf": "",
-        "nome": "",
-        "senha": "",
-        "email": ""
+        "cpf": "12345667",
+        "nome": "Lafayette Batista Melo",
+        "senha": "1234",
+        "email": "Severino@gmail.com"
       },
       "alunosMatriculados": [],
-      "id": 4,
-      "nome": "Programção Distribuida",
-      "semestre": "2024.1"
+      "id": 10,
+      "nome": "Métodos e Técnicas de Pesquisa",
+      "semestre": "2023.2",
+      "descricao": "Método científico e pesquisa. Pensamento científico. Leitura de artigos acadêmicos e científicos. Construção de um projeto científico. Aplicação dos vários tipos de pesquisa. Escrita de um artigo científico. Coleta de dados e métodos de pesquisa na internet"
+    },
+    {
+      "professorResponsavel": {
+        "turmasEncarregadas": [],
+        "cpf": "12345667",
+        "nome": "Severino do Ramo de Paiva",
+        "senha": "1234",
+        "email": "Severino@gmail.com"
+      },
+      "alunosMatriculados": [],
+      "id": 11,
+      "nome": "Segurança de Dados",
+      "semestre": "2023.2",
+      "descricao": "Conceitos básicos sobre segurança da informação. Vulnerabilidades, ameaças e ataques. Autenticação, criptografia simétrica e assimétrica, funções de hash, assinatura digital, certificado digital. Aspectos de segurança para aplicações em redes TCP/IP, firewalls, Protocolo IPSEC, protocolo TLS. "
+    },
+    {
+      "professorResponsavel": {
+        "turmasEncarregadas": [],
+        "cpf": "12345667",
+        "nome": "Fausto",
+        "senha": "1234",
+        "email": "gmail.com"
+      },
+      "alunosMatriculados": [],
+      "id": 12,
+      "nome": "Persistência de Objetos",
+      "semestre": "2023.2",
+      "descricao": "Conceitos da persistência transparente de objetos; Persistência de objetos com banco de dados cliente/servidor; Ciclo de vida de objetos persistentes. Padrões de projeto para persistência de objetos; Consultas (queries) ao grafo de objetos persistentes; ."
+    },
+    {
+      "professorResponsavel": {
+        "turmasEncarregadas": [],
+        "cpf": "12345667",
+        "nome": "Guga Wag ",
+        "senha": "1234",
+        "email": "Guga@ifpb.com"
+      },
+      "alunosMatriculados": [],
+      "id": 13,
+      "nome": "Programação para Web I",
+      "semestre": "2023.2",
+      "descricao": "Características de Web Sites estáticos e dinâmicos. Publicação dinâmica de conteúdo. Conectividade com banco de dados. Tecnologias para administração e disponibilização de conteúdos dinâmicos; desenvolvimento de sites dinâmicos."
     }
   ],
   "professores": [
@@ -179,10 +236,40 @@
       ]
     },
     {
-      "nome": "Guga",
+      "nome": "Maxwell Anderson Ielpo do Amaral",
       "cpf": "12345667",
       "senha": "1234",
-      "email": "gmail.com"
+      "email": "Maxwell@gmail.com"
+    },
+    {
+      "nome": "Giovanni Loureiro Cabral de Melo",
+      "cpf": "12345667",
+      "senha": "1234",
+      "email": "Giovanni@gmail.com"
+    },
+    {
+      "nome": "Lafayette Batista Melo",
+      "cpf": "12345667",
+      "senha": "1234",
+      "email": "Severino@gmail.com"
+    },
+    {
+      "nome": "Severino do Ramo de Paiva",
+      "cpf": "12345667",
+      "senha": "1234",
+      "email": "Severino@gmail.com"
+    },
+    {
+      "nome": "Márcio ",
+      "cpf": "12345667",
+      "senha": "1234",
+      "email": "marrcio@ifpb.com"
+    },
+    {
+      "nome": "Guga Wag ",
+      "cpf": "12345667",
+      "senha": "1234",
+      "email": "Guga@ifpb.com"
     }
   ]
 }
