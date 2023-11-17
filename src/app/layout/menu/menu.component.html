@@ -28,8 +28,7 @@
           Inscrito
         </mat-panel-description>
       </mat-expansion-panel-header>
-
-      <mat-card class="side-nav-card" *ngFor="let disciplina of disciplinasMatriculadas">
+      <mat-card class="side-nav-card" *ngFor="let disciplina of disciplinas">
         {{disciplina.id}} {{disciplina.nome}}
         <mat-card-subtitle>{{disciplina.semestre}}</mat-card-subtitle>
       </mat-card>

@@ -12,7 +12,7 @@ import {AlunoLogadoService} from "./aluno-logado.service";
 })
 export class AuthService {
 
-
+alunoValidado = false;
 
   constructor(private  router: Router, private _alunoService:AlunoCrudService, private alunoLogadoService:AlunoLogadoService) { }
 
@@ -25,16 +25,22 @@ export class AuthService {
        if(alunoAtual.email == email && alunoAtual.senha == senha){
          alunoAuteticado = alunoAtual;
          this.alunoLogadoService.setCurrentStudent(alunoAuteticado);
+         this.alunoValidado = true;
          this.router.navigate(['/listar-disciplinas-matriculado'])
 
        }
 
      })
      if(!alunoAuteticado){
+       this.alunoValidado = false;
        window.alert("Email ou senha errada! Tente Novamente!");
 
      }
    })
+  }
+
+  alunoEstaValidado(){
+    return this.alunoValidado;
   }
 
 

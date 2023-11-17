@@ -28,8 +28,7 @@ export class MenuComponent {
 
 constructor(private _disciplinaService:DisciplinaServiceService,private _alunoService:AlunoCrudService, private alunoLogadoService:AlunoLogadoService) {
   this.alunoPrincipal = alunoLogadoService.getCurrentStudent();
-
-
+  this.alunoPrincipal.turmasMatriculado.forEach(disciplina => console.log(disciplina.nome  + "Aqui"))
   this.disciplinasMatriculadas = this.alunoPrincipal.turmasMatriculado;
 
 }
