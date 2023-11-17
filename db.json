@@ -15,7 +15,22 @@
       "nome": "chama",
       "matricula": "1234",
       "turmasMatriculado": [
-        {}
+        {},
+        {
+          "professorResponsavel": {
+            "turmasEncarregadas": [],
+            "id": 0,
+            "cpf": "",
+            "nome": "",
+            "senha": "",
+            "email": ""
+          },
+          "alunosMatriculados": [],
+          "id": 8,
+          "nome": "Análise e Projeto de Sistemas",
+          "semestre": "2023.2",
+          "descricao": "Noções de Engenharia de Software; Processos/Metodologias de desenvolvimento de software prescritivas e ágeis; Projetos de software: linguagem visual de modelagem, negócio, requisitos, análise e projeto de sistemas"
+        }
       ]
     },
     {

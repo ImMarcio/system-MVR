@@ -11,12 +11,10 @@
       <input matInput [(ngModel)]="disciplinaTratamento.descricao" placeholder="Descreva a disciplina">
     </mat-form-field>
 
-
     <mat-form-field class="mat-form-field">
       <mat-label>Professores</mat-label>
       <mat-select  [(value)]="selectProfessor" >
         <mat-option *ngFor="let professor of professores" [value]="professor">{{professor.nome}}</mat-option>
-
       </mat-select>
     </mat-form-field>
     <mat-card-actions>

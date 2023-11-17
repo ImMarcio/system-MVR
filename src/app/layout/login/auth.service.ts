@@ -11,8 +11,9 @@ import {AlunoLogadoService} from "./aluno-logado.service";
   providedIn: 'root'
 })
 export class AuthService {
-  public usuarioAuteticado:Aluno | undefined;
-  public alunoLogado: Aluno | undefined;
+
+
+
   constructor(private  router: Router, private _alunoService:AlunoCrudService, private alunoLogadoService:AlunoLogadoService) { }
 
 
@@ -22,15 +23,17 @@ export class AuthService {
    this._alunoService.getAlunos().subscribe(alunosListados => {
      alunosListados.map((alunoAtual) =>{
        if(alunoAtual.email == email && alunoAtual.senha == senha){
-         this.usuarioAuteticado = alunoAtual;
-         this.alunoLogadoService.setCurrentStudent(this.usuarioAuteticado);
+         alunoAuteticado = alunoAtual;
+         this.alunoLogadoService.setCurrentStudent(alunoAuteticado);
          this.router.navigate(['/listar-disciplinas-matriculado'])
 
        }
+
      })
-     // if(!alunoAuteticado){
-     //   window.alert("Email ou senha errada! Tente Novamente!")
-     // }
+     if(!alunoAuteticado){
+       window.alert("Email ou senha errada! Tente Novamente!");
+
+     }
    })
   }
 
