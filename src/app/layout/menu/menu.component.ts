@@ -11,6 +11,7 @@ import {ALUNOMAIN} from "../../shared/ALUNO-MAIN";
 import {DisciplinaServiceService} from "../../disciplina/disciplina-service.service";
 import {Aluno} from "../../shared/aluno";
 import {AlunoCrudService} from "../../aluno/aluno-crud.service";
+import {AlunoLogadoService} from "../login/aluno-logado.service";
 
 @Component({
   selector: 'app-menu',
@@ -20,14 +21,16 @@ import {AlunoCrudService} from "../../aluno/aluno-crud.service";
 export class MenuComponent {
   opened = false;
   disciplinas : Disciplina[] | undefined;
-    public alunos: Aluno[] | undefined;
-  alunoTratatamento = ALUNOMAIN;
+  alunos: Aluno[] | undefined;
+  alunoPrincipal: Aluno = new Aluno(0,'','','','') ;
+  disciplinasMatriculadas : Disciplina[] | undefined;
+  alunoEstaLogado:boolean = false;
+
+constructor(private _disciplinaService:DisciplinaServiceService,private _alunoService:AlunoCrudService, private alunoLogadoService:AlunoLogadoService) {
+  this.alunoPrincipal = alunoLogadoService.getCurrentStudent();
 
 
-
-constructor(private _disciplinaService:DisciplinaServiceService,private _alunoService:AlunoCrudService) {
-
-    this._alunoService.postAluno(this.alunoTratatamento).subscribe()
+  this.disciplinasMatriculadas = this.alunoPrincipal.turmasMatriculado;
 
 }
   ngOnInit(){
@@ -62,6 +65,7 @@ constructor(private _disciplinaService:DisciplinaServiceService,private _alunoSe
                   )
               }
           )
+
 
 
   }

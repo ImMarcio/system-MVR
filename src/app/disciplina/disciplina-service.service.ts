@@ -26,12 +26,9 @@ export class DisciplinaServiceService {
     return this._HttpClient.get<Disciplina>(`${this.url}/${id}`)
   }
 
-  // @ts-ignore
-  putDisciplina(id:number,data:any):Observable<Disciplina>{
-       return this._HttpClient.put<Disciplina>(`${this.url}/${id}`,data)
 
-
-
+  putDisciplina(disciplina:Disciplina):Observable<Disciplina>{
+       return this._HttpClient.put<Disciplina>(`${this.url}/${disciplina.id}`,disciplina)
   }
   deleteDisciplina(id:number){
     return this._HttpClient.delete<Disciplina>(`${this.url}/${id}`)

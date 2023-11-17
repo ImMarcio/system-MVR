@@ -1,0 +1,34 @@
+/* Estilo para o form-field */
+.form-field {
+  width: 300px; /* Largura desejada */
+  margin-bottom: 15px; /* Espaçamento inferior */
+}
+
+/* Estilo para o input dentro do form-field */
+input{
+  border-bottom-color: #2196F3; /* Cor da borda inferior */
+  border-width: 2px; /* Largura da borda inferior */
+}
+
+/* Estilo para o rótulo do form-field */
+.mat-label {
+  color: #333; /* Cor do rótulo */
+  font-weight: lighter; /* Peso da fonte do rótulo */
+}
+
+/* Estilo para o rótulo do form-field quando está focado */
+.form-field:focus {
+  color: #2196F3; /* Cor do rótulo quando focado */
+}
+
+.card-action{
+  display: flex;
+  justify-content: center;
+}
+.card-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+

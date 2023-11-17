@@ -1,9 +1,16 @@
 .mat-card-principal{
-  max-width: 400px;
-  margin: 100px;
+  width: 500px;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  background-color: #3f51b5;
 
 }
 .mat-card-principal button{
   border-radius: 10px;
-
+  background-color: #ffffff;
 }

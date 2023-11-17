@@ -5,6 +5,7 @@ import {Observable, Subscription} from "rxjs";
 import {Aluno} from "../../shared/aluno";
 import {Disciplina} from "../../shared/disciplina";
 import {subscribeToArray} from "rxjs/internal/util/subscribeToArray";
+import {AlunoLogadoService} from "../../layout/login/aluno-logado.service";
 
 @Component({
   selector: 'app-listar-disciplinas-matriculado',
@@ -12,12 +13,12 @@ import {subscribeToArray} from "rxjs/internal/util/subscribeToArray";
   styleUrls: ['./listar-disciplinas-matriculado.component.css']
 })
 export class ListarDisciplinasMatriculadoComponent {
-  aluno: Observable<Aluno> | undefined
-  disciplinasMatriculado: Disciplina[] = []
+  aluno: Aluno | undefined
+  disciplinasMatriculado: Array<Disciplina> | undefined = []
 
-  constructor( private _authService:AuthService) {
-    this.aluno = this._authService.alunoLogado;
-    this.aluno?.pipe( )
+  constructor( private _authService:AuthService, private alunoLogadoService:AlunoLogadoService) {
+    this.aluno = alunoLogadoService.getCurrentStudent();
+    this.disciplinasMatriculado = this.aluno?.turmasMatriculado;
 
   }
   // cancelarIncricao(disciplinaID:number){

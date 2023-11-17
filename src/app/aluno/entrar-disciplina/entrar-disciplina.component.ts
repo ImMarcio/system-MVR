@@ -5,6 +5,9 @@ import {Disciplina} from "../../shared/disciplina";
 
 import {ALUNOMAIN} from "../../shared/ALUNO-MAIN";
 import {DisciplinaServiceService} from "../../disciplina/disciplina-service.service";
+import {AlunoLogadoService} from "../../layout/login/aluno-logado.service";
+import {Aluno} from "../../shared/aluno";
+import {AlunoCrudService} from "../aluno-crud.service";
 
 @Component({
   selector: 'app-entrar-disciplina',
@@ -13,18 +16,20 @@ import {DisciplinaServiceService} from "../../disciplina/disciplina-service.serv
 })
 export class EntrarDisciplinaComponent {
   disciplinas : Disciplina[] | undefined;
-  selectDisciplina: Disciplina | undefined ;
-  aluno = ALUNOMAIN;
+  selectDisciplina: Disciplina = new Disciplina(0,'','') ;
+  aluno :Aluno = new Aluno(0,'','','','');
 
-  constructor(private _disciplinaService:DisciplinaServiceService) {
+  constructor(private _disciplinaService:DisciplinaServiceService,private _alunoCrudService:AlunoCrudService, private alunoLogadoService:AlunoLogadoService) {
+    this.aluno = this.alunoLogadoService.getCurrentStudent();
+
   }
   entrarDisciplina(){
-    if (this.selectDisciplina instanceof Disciplina) {
-      this.aluno.turmasMatriculado.push(this.selectDisciplina);
-      this.selectDisciplina.alunosMatriculados.push(this.aluno);
-      this._disciplinaService.putDisciplina(this.selectDisciplina.id,this.selectDisciplina).subscribe();
+    this.aluno.turmasMatriculado.push(this.selectDisciplina);
+    this._alunoCrudService.putAluno(this.aluno).subscribe();
+     this.selectDisciplina.alunosMatriculados.push(this.aluno);
+     this._disciplinaService.getDisciplinaById(this.selectDisciplina.id).subscribe();
 
-    }
+    console.log(this.aluno);
   }
   ngOnInit(){
     this._disciplinaService.getDisciplinas()

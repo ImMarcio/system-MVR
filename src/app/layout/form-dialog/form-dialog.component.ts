@@ -39,8 +39,8 @@ export class FormDialogComponent {
 
 
   }
-  cancelar(): void {
-    this.authService.fazerLogin(this.aluno)
+  entrar(): void {
+    this.authService.fazerLogin(this.aluno.email, this.aluno.senha)
     this.dialogRef.close();
 
   }

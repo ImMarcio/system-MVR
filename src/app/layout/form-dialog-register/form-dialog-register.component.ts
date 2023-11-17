@@ -37,7 +37,7 @@ export class FormDialogRegisterComponent {
 
 
   }
-  cancelar(): void {
+  cadastrar(): void {
     this.aluno.id = this.alunos.length + 1;
     this._alunoService.postAluno(this.aluno)
       .subscribe(

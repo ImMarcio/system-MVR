@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="card-main">
   <mat-card-title>Login</mat-card-title>
     <mat-form-field class="form-field">
       <mat-label>Login</mat-label>
@@ -10,6 +10,6 @@
       <input matInput type="password" [(ngModel)]="aluno.senha">
     </mat-form-field>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="cancelar()">Entrar!</button>
+    <button mat-raised-button color="primary" (click)="entrar()">Entrar!</button>
   </mat-card-actions>
 </mat-card>

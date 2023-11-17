@@ -13,20 +13,21 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 })
 export class DisciplinaManterComponent {
 
-   disciplinaTratamento: Disciplina = new Disciplina(0, "", "");
+  disciplinaTratamento: Disciplina = new Disciplina(0, "", "");
 
   disciplinas : Disciplina[] | undefined;
   professores : Professor[] | undefined;
 
 
-  selectProfessor: Professor | undefined;
+  selectProfessor: Professor = new Professor(0, '','','','') ;
   constructor(private _disciplinaService:DisciplinaServiceService, private _professorService:ProfessorCrudService) {
 
   }
   cadastrar():void{
 
-    // @ts-ignore
+
     this.disciplinaTratamento.professorResponsavel = this.selectProfessor;
+    this.selectProfessor?.turmasEncarregadas.push(this.disciplinaTratamento);
 
     this._disciplinaService.postDisciplina(this.disciplinaTratamento).subscribe(
       (response) => {

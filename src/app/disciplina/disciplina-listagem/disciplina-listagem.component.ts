@@ -34,5 +34,10 @@ constructor(private _disciplinaService:DisciplinaServiceService) {
       )
   }
 
-
+  excluirDisciplina(disciplina:Disciplina){
+    const index = this.disciplinas?.findIndex(disciplinaAtual => disciplinaAtual.id == disciplina.id);
+    // @ts-ignore
+    this.disciplinas?.splice(index,1);
+    this._disciplinaService.deleteDisciplina(disciplina.id).subscribe();
+  }
 }

@@ -14,62 +14,147 @@
       "senha": "1234",
       "nome": "chama",
       "matricula": "1234",
+      "turmasMatriculado": [
+        {}
+      ]
+    },
+    {
+      "id": 3,
+      "email": "gmail",
+      "senha": "1234",
+      "nome": "silva",
+      "matricula": "1234",
       "turmasMatriculado": []
+    },
+    {
+      "id": 4,
+      "email": "",
+      "senha": "",
+      "nome": "",
+      "matricula": "",
+      "turmasMatriculado": []
+    },
+    {
+      "id": 5,
+      "email": "marcio@gmail.com",
+      "senha": "1234",
+      "nome": "Márcio José",
+      "matricula": "20221370023",
+      "turmasMatriculado": [
+        {
+          "nome": "Add your name in the body",
+          "alunosMatriculados": [
+            {
+              "id": 20,
+              "email": "gmail",
+              "senha": "1234",
+              "nome": "silvera",
+              "matricula": "40028922"
+            }
+          ],
+          "id": 1
+        },
+        {
+          "professorResponsavel": {
+            "turmasEncarregadas": [],
+            "id": 0,
+            "cpf": "",
+            "nome": "",
+            "senha": "",
+            "email": ""
+          },
+          "alunosMatriculados": [],
+          "id": 4,
+          "nome": "Nova disciplina",
+          "semestre": "1234"
+        },
+        {
+          "professorResponsavel": {
+            "turmasEncarregadas": [],
+            "id": 0,
+            "cpf": "",
+            "nome": "",
+            "senha": "",
+            "email": ""
+          },
+          "alunosMatriculados": [],
+          "id": 9,
+          "nome": "Algum coisa nova",
+          "semestre": "1234"
+        },
+        {
+          "professorResponsavel": {
+            "turmasEncarregadas": [],
+            "id": 0,
+            "cpf": "",
+            "nome": "",
+            "senha": "",
+            "email": ""
+          },
+          "alunosMatriculados": [],
+          "id": 8,
+          "nome": "Essa é o teste de vinculo",
+          "semestre": "20002.2"
+        }
+      ]
     }
   ],
   "disciplinas": [
     {
-      "name": "Add your name in the body",
-      "alunosMatriculados": [
-        {
-          "id": 20,
-          "email": "gmail",
-          "senha": "1234",
-          "nome": "silvera",
-          "matricula": "40028922",
-          "turmasMatriculado": []
-        }
-      ],
-      "id": 1
+      "professorResponsavel": {
+        "turmasEncarregadas": [],
+        "id": 0,
+        "cpf": "",
+        "nome": "",
+        "senha": "",
+        "email": ""
+      },
+      "alunosMatriculados": [],
+      "id": 1,
+      "nome": "PW!",
+      "semestre": "2022"
     },
     {
       "professorResponsavel": {
-        "email": "",
-        "senha": "",
+        "turmasEncarregadas": [],
+        "id": 0,
         "cpf": "",
-        "nome": "Senior",
-        "turmasEncarregadas": []
+        "nome": "",
+        "senha": "",
+        "email": ""
       },
       "alunosMatriculados": [],
       "id": 2,
-      "nome": "pbo",
-      "semestre": "222.2"
+      "nome": "POB",
+      "semestre": "2023"
     },
     {
       "professorResponsavel": {
         "turmasEncarregadas": [],
-        "cpf": "12345667",
-        "nome": "Fausto",
-        "senha": "1234",
-        "email": "gmail.com"
+        "id": 0,
+        "cpf": "",
+        "nome": "",
+        "senha": "",
+        "email": ""
       },
       "alunosMatriculados": [],
       "id": 3,
-      "nome": "test",
-      "semestre": "2002"
+      "nome": "POO",
+      "semestre": "2022.2"
     },
     {
       "professorResponsavel": {
         "turmasEncarregadas": [],
-        "cpf": "12345667",
-        "nome": "Fausto",
-        "senha": "1234",
-        "email": "gmail.com"
+        "id": 0,
+        "cpf": "",
+        "nome": "",
+        "senha": "",
+        "email": ""
       },
       "alunosMatriculados": [],
       "id": 4,
-      "nome": "Nova disciplina",
-      "semestre": "1234"
+      "nome": "Programção Distribuida",
+      "semestre": "2024.1"
     }
   ],
   "professores": [
@@ -77,7 +162,21 @@
       "nome": "Fausto",
       "cpf": "12345667",
       "senha": "1234",
-      "email": "gmail.com"
+      "email": "gmail.com",
+      "turmasEncarregadas": [
+        {
+          "professorResponsavel": {
+            "cpf": "12345667",
+            "nome": "Fausto",
+            "senha": "1234",
+            "email": "gmail.com"
+          },
+          "alunosMatriculados": [],
+          "id": 9,
+          "nome": "",
+          "semestre": ""
+        }
+      ]
     },
     {
       "nome": "Guga",

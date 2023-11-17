@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'listagem-disciplina', component: DisciplinaListagemComponent},
   {path: 'entrar-disciplina', component: EntrarDisciplinaComponent},
   {path: 'listar-disciplinas-matriculado', component: ListarDisciplinasMatriculadoComponent},
-  {path: 'login', component: LoginComponent}
+  {path: '', component: LoginComponent}
 
 ];
 
