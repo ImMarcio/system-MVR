@@ -9,6 +9,9 @@
     <mat-card-content>{{disciplina.descricao}}</mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="excluirDisciplina(disciplina)"> <mat-icon>delete</mat-icon> </button>
+      <button mat-icon-button (click)="editarDisciplina(disciplina)">
+        <mat-icon>edit</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card>
 

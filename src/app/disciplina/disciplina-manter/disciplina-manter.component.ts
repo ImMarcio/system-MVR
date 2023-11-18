@@ -5,6 +5,7 @@ import {Professor} from "../../shared/professor";
 import {DisciplinaServiceService} from "../disciplina-service.service";
 import {ProfessorCrudService} from "../../professor/professor-crud.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-disciplina-manter',
@@ -13,31 +14,40 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 })
 export class DisciplinaManterComponent {
 
-  disciplinaTratamento: Disciplina = new Disciplina(0, "", "",'');
+  disciplinaTratamento: Disciplina;
 
   disciplinas : Disciplina[] | undefined;
   professores : Professor[] | undefined;
-
-
   selectProfessor: Professor = new Professor(0, '','','','') ;
-  constructor(private _disciplinaService:DisciplinaServiceService, private _professorService:ProfessorCrudService) {
 
+  readonly NOME_BOTAO_CADASTRAR = 'Cadastrar';
+  readonly NOME_BOTAO_ATUALIZAR = 'Atualizar';
+  // disciplinaEdicao:Disciplina;
+  estahCadastrando = true;
+  nomeBotao = this.NOME_BOTAO_CADASTRAR;
+  constructor(private roteador: Router,private rotaAtivada: ActivatedRoute,private _disciplinaService:DisciplinaServiceService, private _professorService:ProfessorCrudService) {
+    const idEdicao = this.rotaAtivada.snapshot.params['id'];
+    if(idEdicao){
+      this.estahCadastrando = false;
+      this._disciplinaService.getDisciplinaById(idEdicao).subscribe(disciplinaRetornada => {
+        this.disciplinaTratamento = disciplinaRetornada;
+      })
+    }
+    this.disciplinaTratamento = new Disciplina(0,'','','');
+    this.nomeBotao = this.estahCadastrando ? this.NOME_BOTAO_CADASTRAR : this.NOME_BOTAO_ATUALIZAR;
   }
   cadastrar():void{
+    if(this.estahCadastrando){
+      this._disciplinaService.postDisciplina(this.disciplinaTratamento).subscribe(
+        disciplinaRetornada => {this.roteador.navigate(["listagem-disciplina"])}
+      )
+    }else{
+      this._disciplinaService.putDisciplina(this.disciplinaTratamento).subscribe(disciplina =>{
+        this.roteador.navigate(["listagem-disciplina"])
+      })
+    }
 
 
-     this.disciplinaTratamento.professorResponsavel = this.selectProfessor;
-    // this.selectProfessor?.turmasEncarregadas.push(this.disciplinaTratamento);
-
-    this._disciplinaService.postDisciplina(this.disciplinaTratamento).subscribe(
-      (response) => {
-        console.log('Recurso criado com sucesso',response);
-      },
-      (error) => {
-        console.error('Error ao criar recurso', error);
-      }
-    );
-    this.disciplinaTratamento = new Disciplina(0,'','','');
 
   }
 

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {Disciplina} from "../../shared/disciplina";
 import {Aluno} from "../../shared/aluno";
 import {DisciplinaServiceService} from "../disciplina-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-disciplina-listagem',
@@ -12,7 +13,7 @@ import {DisciplinaServiceService} from "../disciplina-service.service";
 export class DisciplinaListagemComponent {
 disciplinas : Disciplina[] | undefined;
 
-constructor(private _disciplinaService:DisciplinaServiceService) {
+constructor(private _disciplinaService:DisciplinaServiceService, private roteador: Router) {
 
 
 }
@@ -41,4 +42,11 @@ constructor(private _disciplinaService:DisciplinaServiceService) {
     this.disciplinas?.splice(index,1);
     this._disciplinaService.deleteDisciplina(disciplina.id).subscribe();
   }
+
+  editarDisciplina(disciplina:Disciplina){
+    this.roteador.navigate(['edicao-disciplina', disciplina.id]);
+  }
+
+
+
 }

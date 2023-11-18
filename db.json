@@ -56,61 +56,8 @@
       "nome": "Márcio José",
       "matricula": "20221370023",
       "turmasMatriculado": [
-        {
-          "nome": "Add your name in the body",
-          "alunosMatriculados": [
-            {
-              "id": 20,
-              "email": "gmail",
-              "senha": "1234",
-              "nome": "silvera",
-              "matricula": "40028922"
-            }
-          ],
-          "id": 1
-        },
-        {
-          "professorResponsavel": {
-            "turmasEncarregadas": [],
-            "id": 0,
-            "cpf": "",
-            "nome": "",
-            "senha": "",
-            "email": ""
-          },
-          "alunosMatriculados": [],
-          "id": 4,
-          "nome": "Nova disciplina",
-          "semestre": "1234"
-        },
-        {
-          "professorResponsavel": {
-            "turmasEncarregadas": [],
-            "id": 0,
-            "cpf": "",
-            "nome": "",
-            "senha": "",
-            "email": ""
-          },
-          "alunosMatriculados": [],
-          "id": 9,
-          "nome": "Algum coisa nova",
-          "semestre": "1234"
-        },
-        {
-          "professorResponsavel": {
-            "turmasEncarregadas": [],
-            "id": 0,
-            "cpf": "",
-            "nome": "",
-            "senha": "",
-            "email": ""
-          },
-          "alunosMatriculados": [],
-          "id": 8,
-          "nome": "Essa é o teste de vinculo",
-          "semestre": "20002.2"
-        },
+
+
         {
           "professorResponsavel": {
             "turmasEncarregadas": [],
@@ -124,6 +71,21 @@
           "id": 4,
           "nome": "Programção Distribuida",
           "semestre": "2024.1"
+        },
+        {
+          "professorResponsavel": {
+            "turmasEncarregadas": [],
+            "id": 0,
+            "cpf": "",
+            "nome": "",
+            "senha": "",
+            "email": ""
+          },
+          "alunosMatriculados": [],
+          "id": 11,
+          "nome": "Segurança de Dados",
+          "semestre": "2023.2",
+          "descricao": "Conceitos básicos sobre segurança da informação. Vulnerabilidades, ameaças e ataques. Autenticação, criptografia simétrica e assimétrica, funções de hash, assinatura digital, certificado digital. Aspectos de segurança para aplicações em redes TCP/IP, firewalls, Protocolo IPSEC, protocolo TLS. "
         }
       ]
     }
@@ -154,9 +116,9 @@
       },
       "alunosMatriculados": [],
       "id": 8,
-      "nome": "Análise e Projeto de Sistemas",
+      "nome": "Análise e projeto de Sistemas",
       "semestre": "2023.2",
-      "descricao": "Noções de Engenharia de Software; Processos/Metodologias de desenvolvimento de software prescritivas e ágeis; Projetos de software: linguagem visual de modelagem, negócio, requisitos, análise e projeto de sistemas"
+      "descricao": "Varias coisas dessa vez cuida papai, só vai"
     },
     {
       "professorResponsavel": {

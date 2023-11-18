@@ -12,6 +12,7 @@ import {AuthGuardService} from "./layout/login/auth-guard.service";
 const routes: Routes = [
   {path: 'menu', component: MenuComponent},
   {path: 'listagem-alunos', component: ListagemAlunoComponent},
+  {path: 'edicao-disciplina/:id', component: DisciplinaManterComponent},
   {path: 'cadastro-disciplina', component: DisciplinaManterComponent,canActivate: [AuthGuardService]},
   {path: 'listagem-disciplina', component: DisciplinaListagemComponent},
   {path: 'entrar-disciplina', component: EntrarDisciplinaComponent, canActivate: [AuthGuardService]},
