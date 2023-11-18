@@ -56,8 +56,6 @@
       "nome": "Márcio José",
       "matricula": "20221370023",
       "turmasMatriculado": [
-
-
         {
           "professorResponsavel": {
             "turmasEncarregadas": [],
@@ -158,7 +156,7 @@
       },
       "alunosMatriculados": [],
       "id": 11,
-      "nome": "Segurança de Dados",
+      "nome": "Segurança de Dado",
       "semestre": "2023.2",
       "descricao": "Conceitos básicos sobre segurança da informação. Vulnerabilidades, ameaças e ataques. Autenticação, criptografia simétrica e assimétrica, funções de hash, assinatura digital, certificado digital. Aspectos de segurança para aplicações em redes TCP/IP, firewalls, Protocolo IPSEC, protocolo TLS. "
     },
