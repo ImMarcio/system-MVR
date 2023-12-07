@@ -53,7 +53,7 @@ export class DisciplinaManterComponent {
 
       this._disciplinaService.inserir(this.disciplinaTratamento).subscribe(
         disciplinaRetornada => {this.roteador.navigate(["listagem-disciplina"])
-        } 
+        }
       )
 
     }else{
