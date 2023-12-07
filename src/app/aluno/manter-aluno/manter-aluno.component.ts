@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {AlunoCrudService} from "../aluno-crud.service";
-import {Aluno} from "../../shared/aluno";
+import {Aluno} from "../../shared/modelo/aluno";
 
 @Component({
   selector: 'app-manter-aluno',
@@ -9,7 +9,7 @@ import {Aluno} from "../../shared/aluno";
 })
 export class ManterAlunoComponent {
 
-  aluno:Aluno = new Aluno(0,'','','','');
+  aluno:Aluno = new Aluno('');
 constructor(private _alunoService:AlunoCrudService) {
 }
 enviarAluno(){

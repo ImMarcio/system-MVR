@@ -4,7 +4,9 @@ import {MatDialogRef} from "@angular/material/dialog";
 
 import {AuthService} from "../login/auth.service";
 import {AlunoCrudService} from "../../aluno/aluno-crud.service";
-import {Aluno} from "../../shared/aluno";
+import {Aluno} from "../../shared/modelo/aluno";
+import {Professor} from "../../shared/modelo/professor";
+import {AlunoFireStoreService} from "../../shared/services/aluno-fire-store.service";
 
 @Component({
   selector: 'app-form-dialog',
@@ -12,36 +14,26 @@ import {Aluno} from "../../shared/aluno";
   styleUrls: ['./form-dialog.component.css']
 })
 export class FormDialogComponent {
-  public aluno:Aluno = new Aluno(200,'','','','');
+  public user: Aluno  = new Aluno("") ;
   alunos:Array<Aluno> = [];
 
   constructor(
     public dialogRef: MatDialogRef<FormDialogComponent>
-  , private authService:AuthService,  private _alunoService:AlunoCrudService) {}
+  , private authService:AuthService,  private _alunoService:AlunoCrudService, private alunoFire:AlunoFireStoreService) {}
 
   ngOnInit(){
-    this._alunoService.getAlunos()
-      .subscribe(
-        retorno => {
-          this.alunos = retorno.map(
-            item => {
-              return new Aluno(
-                item.id,
-                item.nome,
-                item.email,
-                item.senha,
-                item.matricula
-              )
-            }
-          )
-        }
-      )
-
+    this.alunoFire.listar().subscribe(alunosRetornados =>
+      {
+        this.alunos = alunosRetornados;
+      }
+    );
 
   }
   entrar(): void {
-    this.authService.fazerLogin(this.aluno.email, this.aluno.senha)
+    // @ts-ignore
+    this.authService.fazerLogin(this.user.email, this.user.senha)
     this.dialogRef.close();
+
 
   }
 }

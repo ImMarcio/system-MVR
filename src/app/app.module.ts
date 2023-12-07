@@ -9,6 +9,7 @@ import {AlunoModule} from "./aluno/aluno.module";
 import {ProfessorModule} from "./professor/professor.module";
 import {DisciplinaModule} from "./disciplina/disciplina.module";
 import {AuthService} from "./layout/login/auth.service";
+import {FirestoreMvrModule} from "./shared/firestore-mvr/firestore-mvr.module";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {AuthService} from "./layout/login/auth.service";
     AlunoModule,
     ProfessorModule,
     DisciplinaModule,
+    FirestoreMvrModule
 
   ],
   providers: [AuthService],

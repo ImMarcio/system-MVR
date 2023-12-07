@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import {Disciplina} from "../../shared/disciplina";
+import {Disciplina} from "../../shared/modelo/disciplina";
 
-import {Professor} from "../../shared/professor";
+import {Professor} from "../../shared/modelo/professor";
 import {DisciplinaServiceService} from "../disciplina-service.service";
 import {ProfessorCrudService} from "../../professor/professor-crud.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 import {ActivatedRoute, Router} from "@angular/router";
+import {DisciplinaFireStoreService} from "../../shared/services/disciplina-fire-store.service";
+import {ProfessorFireStoreService} from "../../shared/services/professor-fire-store.service";
 
 @Component({
   selector: 'app-disciplina-manter',
@@ -18,82 +20,62 @@ export class DisciplinaManterComponent {
 
   disciplinas : Disciplina[] | undefined;
   professores : Professor[] | undefined;
-  selectProfessor: Professor = new Professor(0, '','','','') ;
+  selectProfessor: Professor | undefined ;
+  professor: Professor | undefined = new Professor('');
 
   readonly NOME_BOTAO_CADASTRAR = 'Cadastrar';
   readonly NOME_BOTAO_ATUALIZAR = 'Atualizar';
   // disciplinaEdicao:Disciplina;
   estahCadastrando = true;
   nomeBotao = this.NOME_BOTAO_CADASTRAR;
-  constructor(private roteador: Router,private rotaAtivada: ActivatedRoute,private _disciplinaService:DisciplinaServiceService, private _professorService:ProfessorCrudService) {
+  constructor(private roteador: Router,private rotaAtivada: ActivatedRoute,private _disciplinaService:DisciplinaFireStoreService, private _professorService:ProfessorFireStoreService) {
     const idEdicao = this.rotaAtivada.snapshot.params['id'];
     if(idEdicao){
       this.estahCadastrando = false;
-      this._disciplinaService.getDisciplinaById(idEdicao).subscribe(disciplinaRetornada => {
+      this._disciplinaService.pesquisarPorId(idEdicao).subscribe(disciplinaRetornada => {
         this.disciplinaTratamento = disciplinaRetornada;
       })
     }
-    this.disciplinaTratamento = new Disciplina(0,'','','');
+    this.disciplinaTratamento = new Disciplina('');
     this.nomeBotao = this.estahCadastrando ? this.NOME_BOTAO_CADASTRAR : this.NOME_BOTAO_ATUALIZAR;
   }
   cadastrar():void{
     if(this.estahCadastrando){
-      this._disciplinaService.postDisciplina(this.disciplinaTratamento).subscribe(
+      if(this.selectProfessor && this.selectProfessor.nome){
+      this.disciplinaTratamento.professorResponsavel = this.selectProfessor.nome;}
+
+      this._disciplinaService.inserir(this.disciplinaTratamento).subscribe(
         disciplinaRetornada => {this.roteador.navigate(["listagem-disciplina"])}
       )
+
     }else{
-      this._disciplinaService.putDisciplina(this.disciplinaTratamento).subscribe(disciplina =>{
+      if(this.selectProfessor && this.selectProfessor.nome){
+      this.disciplinaTratamento.professorResponsavel = this.selectProfessor.nome;
+      }
+      this._disciplinaService.atualizar(this.disciplinaTratamento).subscribe(disciplina =>{
         this.roteador.navigate(["listagem-disciplina"])
+
       })
     }
-
-
 
   }
 
 
   ngOnInit(){
-    this._disciplinaService.getDisciplinas()
-      .subscribe(
-        retorno => {
-          this.disciplinas = retorno.map(
-            item => {
-              return new Disciplina(
-                item.id,
-                item.nome,
-                item.semestre,
-                item.descricao
-              )
-            }
-          )
-        }
-      )
+    this._disciplinaService.listar().subscribe(disciplinasRetornadas =>
+      {
+        this.disciplinas = disciplinasRetornadas;
+      }
+    );
 
 
 
 
-      this._professorService.getProfessores()
-          .subscribe(
-              retorno => {
-                  this.professores = retorno.map(
-                      item => {
-                          return new Professor(
-                              item.id,
-                              item.cpf,
-                              item.nome,
-                              item.senha,
-                              item.email
-                          )
-                      }
-                  )
-              }
-          )
-  }
+    this._professorService.listar().subscribe(professoresRetornados =>
+      {
+        this.professores = professoresRetornados;
+      }
+    );
 
-
-
-
-
-
-
+}
 }

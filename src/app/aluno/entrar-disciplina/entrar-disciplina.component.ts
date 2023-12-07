@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 
 
-import {Disciplina} from "../../shared/disciplina";
+import {Disciplina} from "../../shared/modelo/disciplina";
 
 
 import {DisciplinaServiceService} from "../../disciplina/disciplina-service.service";
 import {AlunoLogadoService} from "../../layout/login/aluno-logado.service";
-import {Aluno} from "../../shared/aluno";
+import {Aluno} from "../../shared/modelo/aluno";
 import {AlunoCrudService} from "../aluno-crud.service";
+import {AlunoFireStoreService} from "../../shared/services/aluno-fire-store.service";
+import {DisciplinaFireStoreService} from "../../shared/services/disciplina-fire-store.service";
 
 @Component({
   selector: 'app-entrar-disciplina',
@@ -16,41 +18,41 @@ import {AlunoCrudService} from "../aluno-crud.service";
 })
 export class EntrarDisciplinaComponent {
   disciplinas : Disciplina[] | undefined;
-  selectDisciplina: Disciplina = new Disciplina(0,'','','') ;
-  aluno :Aluno = new Aluno(0,'','','','');
+  selectDisciplina: Disciplina | undefined;
+  aluno :Aluno = new Aluno('');
   messageBox: any;
 
-  constructor(private _disciplinaService:DisciplinaServiceService,private _alunoCrudService:AlunoCrudService, private alunoLogadoService:AlunoLogadoService) {
+  constructor(private _disciplinaService:DisciplinaFireStoreService, private _alunoService:AlunoFireStoreService, private alunoLogadoService:AlunoLogadoService) {
     this.aluno = this.alunoLogadoService.getCurrentStudent();
 
   }
   entrarDisciplina(){
-    this.aluno.turmasMatriculado.push(this.selectDisciplina);
-    this._alunoCrudService.putAluno(this.aluno).subscribe();
-     this.selectDisciplina.alunosMatriculados.push(this.aluno);
-     this._disciplinaService.getDisciplinaById(this.selectDisciplina.id).subscribe();
-     if(this.aluno.email.length >2){
+      if(this.aluno && this.aluno.id && this.selectDisciplina && this.selectDisciplina.id ){
+          this.aluno.turmasMatriculado?.push(this.selectDisciplina.id)
+          this._alunoService.atualizar(this.aluno).subscribe();
+
+          if(this.selectDisciplina && this.selectDisciplina.alunosMatriculados){
+              this.selectDisciplina.alunosMatriculados.push(this.aluno.id);
+              this._disciplinaService.atualizar(this.selectDisciplina).subscribe()
+          }
+
+      }
+
+
+
+     // @ts-ignore
+    if(this.aluno.email.length >2){
       this.messageBox = "Aluno matriculado com Sucesso";
      }else{
        this.messageBox = "Faça o login antes de se matricular";
      }
   }
   ngOnInit(){
-    this._disciplinaService.getDisciplinas()
-        .subscribe(
-            retorno => {
-              this.disciplinas = retorno.map(
-                  item => {
-                    return new Disciplina(
-                        item.id,
-                        item.nome,
-                        item.semestre,
-                        item.descricao
-                    )
-                  }
-              )
-            }
-        )
+    this._disciplinaService.listar().subscribe(disciplinasRetornadas =>
+      {
+        this.disciplinas = disciplinasRetornadas;
+      }
+    );
   }
 
 

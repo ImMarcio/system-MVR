@@ -5,7 +5,7 @@ import {FormDialogComponent} from "../form-dialog/form-dialog.component";
 
 import {AuthService} from "./auth.service";
 
-import {Aluno} from "../../shared/aluno";
+import {Aluno} from "../../shared/modelo/aluno";
 import {HttpClient} from "@angular/common/http";
 import {FormDialogRegisterComponent} from "../form-dialog-register/form-dialog-register.component";
 import {AlunoLogadoService} from "./aluno-logado.service";
@@ -44,9 +44,9 @@ export class LoginComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+
     });
-    this.mostrarLogin = false;
+
   }
 
 

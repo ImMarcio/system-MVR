@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Aluno} from "../shared/aluno";
+import {Aluno} from "../shared/modelo/aluno";
 import {filter, map, Observable, toArray} from "rxjs";
 
 

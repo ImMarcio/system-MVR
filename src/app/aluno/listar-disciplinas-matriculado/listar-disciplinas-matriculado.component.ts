@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 
 import {AuthService} from "../../layout/login/auth.service";
 import {Observable, Subscription} from "rxjs";
-import {Aluno} from "../../shared/aluno";
-import {Disciplina} from "../../shared/disciplina";
+import {Aluno} from "../../shared/modelo/aluno";
+import {Disciplina} from "../../shared/modelo/disciplina";
 import {subscribeToArray} from "rxjs/internal/util/subscribeToArray";
 import {AlunoLogadoService} from "../../layout/login/aluno-logado.service";
+import {DisciplinaFireStoreService} from "../../shared/services/disciplina-fire-store.service";
 
 @Component({
   selector: 'app-listar-disciplinas-matriculado',
@@ -13,12 +14,37 @@ import {AlunoLogadoService} from "../../layout/login/aluno-logado.service";
   styleUrls: ['./listar-disciplinas-matriculado.component.css']
 })
 export class ListarDisciplinasMatriculadoComponent {
-  aluno: Aluno | undefined
-  disciplinasMatriculado: Array<Disciplina> | undefined = []
+  aluno: Aluno = new Aluno('')
+  disciplinasMatriculado: Array<Disciplina> = [];
+  disciplinas:Array<Disciplina>  = [];
 
-  constructor( private _authService:AuthService, private alunoLogadoService:AlunoLogadoService) {
+  constructor( private _disciplinaServiceFireStore:DisciplinaFireStoreService,private _authService:AuthService, private alunoLogadoService:AlunoLogadoService) {
     this.aluno = alunoLogadoService.getCurrentStudent();
-    this.disciplinasMatriculado = this.aluno?.turmasMatriculado;
+    this.disciplinas?.find(objeto => {
+      for(const disciplina in this.aluno.turmasMatriculado){
+        if(objeto.id === disciplina){
+          this.disciplinasMatriculado.push(objeto);
+        }
+      }
+    })
+
+    // for (const disciplinaID in this.aluno.turmasMatriculado) {
+    //   this.disciplinas.forEach(disciplinaArray => {
+    //     if(disciplinaArray.id === disciplinaID){
+    //       this.disciplinasMatriculado.push(disciplinaArray);
+    //     }
+    //   })
+    // }
+
+    }
+
+  ngOnInit(){
+    this._disciplinaServiceFireStore.listar().subscribe(disciplinasRetornadas =>
+        {
+          this.disciplinas = disciplinasRetornadas;
+        }
+    );
+  }
 
   }
   // cancelarIncricao(disciplinaID:number){
@@ -28,4 +54,7 @@ export class ListarDisciplinasMatriculadoComponent {
   //   }
   // }
 
-}
+
+
+
+

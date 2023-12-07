@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Aluno} from "../shared/aluno";
+import {Aluno} from "../shared/modelo/aluno";
 import {Observable} from "rxjs";
-import {Disciplina} from "../shared/disciplina";
+import {Disciplina} from "../shared/modelo/disciplina";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -22,7 +22,7 @@ export class DisciplinaServiceService {
     postDisciplina(data: Disciplina | undefined){
     return this._HttpClient.post(this.url,data);
   }
-  getDisciplinaById(id:number):Observable<Disciplina>{
+  getDisciplinaById(id:string):Observable<Disciplina>{
     return this._HttpClient.get<Disciplina>(`${this.url}/${id}`)
   }
 

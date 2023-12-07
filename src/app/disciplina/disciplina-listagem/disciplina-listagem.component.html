@@ -2,7 +2,7 @@
   <mat-card class="mat-card-simples" *ngFor="let disciplina of disciplinas">
     <mat-card-header>
       <mat-card-title>
-        <mat-icon>school</mat-icon>{{disciplina.nome}} - {{disciplina.professorResponsavel?.nome}}
+        <mat-icon>school</mat-icon>{{disciplina.nome}} - {{disciplina.professorResponsavel}}
       </mat-card-title>
       <mat-card-subtitle *ngIf="disciplina.id">{{disciplina.semestre}}</mat-card-subtitle>
     </mat-card-header>
