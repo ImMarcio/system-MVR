@@ -27,12 +27,12 @@ export class EntrarDisciplinaComponent {
 
   }
   entrarDisciplina(){
-      if(this.aluno && this.aluno.id && this.selectDisciplina && this.selectDisciplina.nome ){
+      if(this.aluno && this.aluno.id && this.aluno.nome && this.selectDisciplina && this.selectDisciplina.nome ){
           this.aluno.turmasMatriculado?.push(this.selectDisciplina.nome)
           this._alunoService.atualizar(this.aluno).subscribe();
           console.log(this.selectDisciplina.nome)
           if(this.selectDisciplina && this.selectDisciplina.alunosMatriculados){
-              this.selectDisciplina.alunosMatriculados.push(this.aluno.id);
+              this.selectDisciplina.alunosMatriculados.push(this.aluno.nome);
               this._disciplinaService.atualizar(this.selectDisciplina).subscribe()
           }
 
