@@ -36,3 +36,9 @@ editClass{
 }
 
 
+.aluno-label{
+  color: #333333;
+  width: fit-content;
+  margin: 5px;
+
+}

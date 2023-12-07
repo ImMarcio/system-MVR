@@ -6,7 +6,11 @@
       </mat-card-title>
       <mat-card-subtitle *ngIf="disciplina.id">{{disciplina.semestre}}</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>{{disciplina.descricao}}</mat-card-content>
+    <mat-card-content>{{disciplina.descricao}}
+    <mat-card class="aluno-label" *ngFor="let aluno of disciplina.alunosMatriculados">
+      {{aluno}}
+    </mat-card>
+    </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="excluirDisciplina(disciplina)"> <mat-icon>delete</mat-icon> </button>
       <button mat-icon-button (click)="editarDisciplina(disciplina)">
