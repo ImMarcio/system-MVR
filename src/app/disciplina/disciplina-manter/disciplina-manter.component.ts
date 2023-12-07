@@ -28,6 +28,8 @@ export class DisciplinaManterComponent {
   // disciplinaEdicao:Disciplina;
   estahCadastrando = true;
   nomeBotao = this.NOME_BOTAO_CADASTRAR;
+
+
   constructor(private roteador: Router,private rotaAtivada: ActivatedRoute,private _disciplinaService:DisciplinaFireStoreService, private _professorService:ProfessorFireStoreService) {
     const idEdicao = this.rotaAtivada.snapshot.params['id'];
     if(idEdicao){
@@ -36,21 +38,28 @@ export class DisciplinaManterComponent {
         this.disciplinaTratamento = disciplinaRetornada;
       })
     }
+
     this.disciplinaTratamento = new Disciplina('');
     this.nomeBotao = this.estahCadastrando ? this.NOME_BOTAO_CADASTRAR : this.NOME_BOTAO_ATUALIZAR;
   }
   cadastrar():void{
+
     if(this.estahCadastrando){
-      if(this.selectProfessor && this.selectProfessor.nome){
-      this.disciplinaTratamento.professorResponsavel = this.selectProfessor.nome;}
+      if(this.selectProfessor && this.selectProfessor.nome && this.disciplinaTratamento.nome){
+      this.disciplinaTratamento.professorResponsavel = this.selectProfessor.nome;
+        this.selectProfessor?.turmasEncarregadas?.push(this.disciplinaTratamento.nome);
+        this._professorService.atualizar(this.selectProfessor);
+      }
 
       this._disciplinaService.inserir(this.disciplinaTratamento).subscribe(
-        disciplinaRetornada => {this.roteador.navigate(["listagem-disciplina"])}
+        disciplinaRetornada => {this.roteador.navigate(["listagem-disciplina"])
+        } 
       )
 
     }else{
       if(this.selectProfessor && this.selectProfessor.nome){
       this.disciplinaTratamento.professorResponsavel = this.selectProfessor.nome;
+
       }
       this._disciplinaService.atualizar(this.disciplinaTratamento).subscribe(disciplina =>{
         this.roteador.navigate(["listagem-disciplina"])
