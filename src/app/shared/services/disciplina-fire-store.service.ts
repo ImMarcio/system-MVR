@@ -42,7 +42,7 @@ export class DisciplinaFireStoreService {
   }
 
 
-    atualizar(disciplina: Disciplina | undefined): Observable<void> {
+    atualizar(disciplina: Disciplina): Observable<void> {
     // @ts-ignore
       const id = disciplina.id;
 // removendo id pois não vamos guardar nos dados do documento, mas sim usar apenas como id para recuperar o documento

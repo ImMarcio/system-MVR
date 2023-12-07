@@ -7,6 +7,7 @@ import {Disciplina} from "../../shared/modelo/disciplina";
 import {subscribeToArray} from "rxjs/internal/util/subscribeToArray";
 import {AlunoLogadoService} from "../../layout/login/aluno-logado.service";
 import {DisciplinaFireStoreService} from "../../shared/services/disciplina-fire-store.service";
+import {AlunoFireStoreService} from "../../shared/services/aluno-fire-store.service";
 
 @Component({
   selector: 'app-listar-disciplinas-matriculado',
@@ -15,26 +16,21 @@ import {DisciplinaFireStoreService} from "../../shared/services/disciplina-fire-
 })
 export class ListarDisciplinasMatriculadoComponent {
   aluno: Aluno = new Aluno('')
-  disciplinasMatriculado: Array<Disciplina> = [];
+  disciplinasMatriculado: Array<string> | undefined = [];
   disciplinas:Array<Disciplina>  = [];
 
-  constructor( private _disciplinaServiceFireStore:DisciplinaFireStoreService,private _authService:AuthService, private alunoLogadoService:AlunoLogadoService) {
+  constructor( private _disciplinaServiceFireStore:DisciplinaFireStoreService,private _authService:AuthService, private alunoLogadoService:AlunoLogadoService, private alunoService:AlunoFireStoreService) {
     this.aluno = alunoLogadoService.getCurrentStudent();
-    this.disciplinas?.find(objeto => {
-      for(const disciplina in this.aluno.turmasMatriculado){
-        if(objeto.id === disciplina){
-          this.disciplinasMatriculado.push(objeto);
-        }
-      }
-    })
+    this.disciplinasMatriculado = this.aluno.turmasMatriculado;
 
-    // for (const disciplinaID in this.aluno.turmasMatriculado) {
-    //   this.disciplinas.forEach(disciplinaArray => {
-    //     if(disciplinaArray.id === disciplinaID){
-    //       this.disciplinasMatriculado.push(disciplinaArray);
+    // this.disciplinas?.find(objeto => {
+    //   for(const disciplina in this.aluno.turmasMatriculado){
+    //     if(objeto.nome === disciplina){
+    //       this.disciplinasMatriculado.push(objeto);
     //     }
-    //   })
-    // }
+    //   }
+    // })
+
 
     }
 
@@ -45,14 +41,19 @@ export class ListarDisciplinasMatriculadoComponent {
         }
     );
   }
+  cancelarIncricao(disciplina:String){
+    if(this.aluno.turmasMatriculado){
+    const indxRemover = this.aluno.turmasMatriculado.findIndex(disciplinaAtual => disciplinaAtual === disciplina);
+    if(indxRemover > -1){
+      this.aluno.turmasMatriculado.splice(indxRemover, 1);
+      this.alunoService.atualizar(this.aluno).subscribe()
+    }
+  }
 
   }
-  // cancelarIncricao(disciplinaID:number){
-  //   const indxRemover = this.disciplinasMatriculado.findIndex(disciplina => disciplina.codigo === disciplinaID);
-  //   if(indxRemover > -1){
-  //     this.disciplinasMatriculado.splice(indxRemover, 1);
-  //   }
-  // }
+
+  }
+
 
 
 
