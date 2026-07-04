@@ -12,20 +12,30 @@ export class AlunoLogadoService {
   private currentTeacher: Professor;
   constructor(private http:HttpClient) {
     this.currentTeacher = new Professor('');
-    this.url = 'http://localhost:3000/alunos'
+    this.url = 'http://localhost:3000/alunos';
+    const stored = sessionStorage.getItem('currentStudent');
+    if (stored) {
+      try {
+        this.currentStudent = JSON.parse(stored);
+      } catch (e) {
+        this.currentStudent = undefined;
+      }
+    }
   }
 
-  setCurrentStudent(aluno:Aluno){
+  setCurrentStudent(aluno: Aluno | undefined){
     this.currentStudent = aluno;
+    if (aluno) {
+      sessionStorage.setItem('currentStudent', JSON.stringify(aluno));
+    } else {
+      sessionStorage.removeItem('currentStudent');
+    }
   }
 
   setCurrentTeacher(profesor:Professor){
     this.currentTeacher = profesor;
   }
-  getCurrentStudent():Aluno{
-    return <Aluno>this.currentStudent
+  getCurrentStudent(): Aluno {
+    return this.currentStudent || new Aluno('');
   }
-
-
-
 }

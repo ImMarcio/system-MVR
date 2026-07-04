@@ -1,47 +1,32 @@
 
 .tela{
-  background-color: #5668ce;
-  background-repeat: repeat;
+  background-color: #f3f4f6;
+  min-height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
 }
 .example-spacer {
   flex: 1 1 auto;
 }
 
-.example-container {
-  width: 400px;
-  height: 200px;
-  margin: 10px;
-  border: 1px solid #555;
-}
-
 .mat-sidenav-container{
-  height:calc(205vh - 115vh);
+  height: calc(100vh - 64px);
 }
 .mat-sidenav{
-  width: 325px;
+  width: 280px;
   background-color: #ffffff;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .buttonSideNav{
-  width: 200px;
-  border: transparent;
-  border-radius: 10px;
-  margin: 10px  ;
+  width: calc(100% - 20px);
+  margin: 10px;
 }
 .painelSideNav
 {
   border: transparent;
-
 }
 .side-nav-card{
-  font-size: medium;
-  min-width: 250px;
-  width: 250px;
-  max-width: 250px;
-  height: 50px;
-  min-height: 50px;
-  max-height: 50px;
   margin: 10px;
-  border: transparent;
-  border-radius: 10px;
+  border-radius: 8px;
 }

@@ -42,7 +42,7 @@ export class AuthService {
   }
 
   alunoEstaValidado(){
-    return this.alunoValidado;
+    return this.alunoValidado || !!(this.alunoLogadoService.getCurrentStudent() && this.alunoLogadoService.getCurrentStudent().id);
   }
 
 

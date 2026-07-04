@@ -41,15 +41,24 @@ export class ListarDisciplinasMatriculadoComponent {
         }
     );
   }
-  cancelarIncricao(disciplina:String){
+  cancelarIncricao(disciplina: string){
     if(this.aluno.turmasMatriculado){
-    const indxRemover = this.aluno.turmasMatriculado.findIndex(disciplinaAtual => disciplinaAtual === disciplina);
-    if(indxRemover > -1){
-      this.aluno.turmasMatriculado.splice(indxRemover, 1);
-      this.alunoService.atualizar(this.aluno).subscribe()
+      const indxRemover = this.aluno.turmasMatriculado.findIndex(disciplinaAtual => disciplinaAtual === disciplina);
+      if(indxRemover > -1){
+        this.aluno.turmasMatriculado.splice(indxRemover, 1);
+        this.alunoService.atualizar(this.aluno).subscribe();
+        this.alunoLogadoService.setCurrentStudent(this.aluno);
+      }
     }
-  }
 
+    const discObj = this.disciplinas.find(d => d.nome === disciplina);
+    if (discObj && discObj.alunosMatriculados && this.aluno.nome) {
+      const studentIdx = discObj.alunosMatriculados.indexOf(this.aluno.nome);
+      if (studentIdx > -1) {
+        discObj.alunosMatriculados.splice(studentIdx, 1);
+        this._disciplinaServiceFireStore.atualizar(discObj).subscribe();
+      }
+    }
   }
 
   }

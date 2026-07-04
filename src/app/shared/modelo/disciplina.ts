@@ -15,7 +15,7 @@ export class Disciplina{
     this.semestre = disciplina.semestre;
     this.descricao = disciplina.descricao;
     this.professorResponsavel = disciplina.professorResponsavel
-    this.alunosMatriculados = [];
+    this.alunosMatriculados = disciplina.alunosMatriculados || [];
   }
 
 

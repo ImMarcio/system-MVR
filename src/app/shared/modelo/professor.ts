@@ -13,7 +13,7 @@ export class Professor {
     this.nome = professor.nome;
     this.senha = professor.senha;
     this.email = professor.email;
-    this.turmasEncarregadas = []
+    this.turmasEncarregadas = professor.turmasEncarregadas || [];
   }
 
 }

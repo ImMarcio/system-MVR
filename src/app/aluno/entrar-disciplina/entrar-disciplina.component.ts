@@ -28,24 +28,23 @@ export class EntrarDisciplinaComponent {
   }
   entrarDisciplina(){
       if(this.aluno && this.aluno.id && this.aluno.nome && this.selectDisciplina && this.selectDisciplina.nome ){
-          this.aluno.turmasMatriculado?.push(this.selectDisciplina.nome)
-          this._alunoService.atualizar(this.aluno).subscribe();
-          console.log(this.selectDisciplina.nome)
-          if(this.selectDisciplina && this.selectDisciplina.alunosMatriculados){
-              this.selectDisciplina.alunosMatriculados.push(this.aluno.nome);
-              this._disciplinaService.atualizar(this.selectDisciplina).subscribe()
+          this.aluno.turmasMatriculado = this.aluno.turmasMatriculado || [];
+          if (!this.aluno.turmasMatriculado.includes(this.selectDisciplina.nome)) {
+              this.aluno.turmasMatriculado.push(this.selectDisciplina.nome);
+              this._alunoService.atualizar(this.aluno).subscribe();
+              this.alunoLogadoService.setCurrentStudent(this.aluno);
           }
 
+          this.selectDisciplina.alunosMatriculados = this.selectDisciplina.alunosMatriculados || [];
+          if (!this.selectDisciplina.alunosMatriculados.includes(this.aluno.nome)) {
+              this.selectDisciplina.alunosMatriculados.push(this.aluno.nome);
+              this._disciplinaService.atualizar(this.selectDisciplina).subscribe();
+          }
+
+          this.messageBox = "Aluno matriculado com Sucesso";
+      } else {
+          this.messageBox = "Faça o login e selecione uma disciplina antes de se matricular";
       }
-
-
-
-     // @ts-ignore
-    if(this.aluno.email.length >2){
-      this.messageBox = "Aluno matriculado com Sucesso";
-     }else{
-       this.messageBox = "Faça o login antes de se matricular";
-     }
   }
   ngOnInit(){
     this._disciplinaService.listar().subscribe(disciplinasRetornadas =>

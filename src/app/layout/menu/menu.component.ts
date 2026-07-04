@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 
 import {MatDialog} from "@angular/material/dialog";
-
-
+import {Router} from "@angular/router";
 
 import {Disciplina} from "../../shared/modelo/disciplina";
-
-
 
 import {DisciplinaServiceService} from "../../disciplina/disciplina-service.service";
 import {Aluno} from "../../shared/modelo/aluno";
@@ -24,16 +21,37 @@ export class MenuComponent {
   opened = false;
   disciplinas : Disciplina[] | undefined;
   alunos: Aluno[] | undefined;
-  alunoPrincipal: Aluno;
-  disciplinasMatriculadas : Disciplina[] | undefined;
-  alunoEstaLogado:boolean = false;
 
-constructor(private _disciplinaService:DisciplinaFireStoreService,private _alunoService:AlunoCrudService,private alunoFire:AlunoFireStoreService, private alunoLogadoService:AlunoLogadoService) {
-  this.alunoPrincipal = alunoLogadoService.getCurrentStudent();
-  // this.alunoPrincipal.turmasMatriculado.forEach(disciplina => console.log(disciplina.nome  + "Aqui"))
-  // this.disciplinasMatriculadas = this.alunoPrincipal.turmasMatriculado;
+  constructor(
+    private _disciplinaService:DisciplinaFireStoreService,
+    private _alunoService:AlunoCrudService,
+    private alunoFire:AlunoFireStoreService,
+    private alunoLogadoService:AlunoLogadoService,
+    private roteador: Router
+  ) {}
 
-}
+  get alunoPrincipal(): Aluno {
+    return this.alunoLogadoService.getCurrentStudent();
+  }
+
+  get alunoEstaLogado(): boolean {
+    const student = this.alunoLogadoService.getCurrentStudent();
+    return !!(student && student.id);
+  }
+
+  get disciplinasMatriculadas(): Disciplina[] {
+    const student = this.alunoLogadoService.getCurrentStudent();
+    if (!student || !student.turmasMatriculado || !this.disciplinas) {
+      return [];
+    }
+    return this.disciplinas.filter(d => d.nome && student.turmasMatriculado?.includes(d.nome));
+  }
+
+  deslogar() {
+    this.alunoLogadoService.setCurrentStudent(undefined);
+    this.roteador.navigate(['']);
+  }
+
   ngOnInit(){
     this._disciplinaService.listar().subscribe(disciplinasRetornadas =>
       {
@@ -46,12 +64,6 @@ constructor(private _disciplinaService:DisciplinaFireStoreService,private _aluno
         this.alunos = alunosRetornados;
       }
     );
-    console.log('estou aqui');
-    console.log(this.alunos);
-
-
-
   }
-
 
 }

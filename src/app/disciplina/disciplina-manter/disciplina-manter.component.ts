@@ -17,6 +17,7 @@ import {ProfessorFireStoreService} from "../../shared/services/professor-fire-st
 export class DisciplinaManterComponent {
 
   disciplinaTratamento: Disciplina;
+  originalDisciplina?: Disciplina;
 
   disciplinas : Disciplina[] | undefined;
   professores : Professor[] | undefined;
@@ -25,30 +26,40 @@ export class DisciplinaManterComponent {
 
   readonly NOME_BOTAO_CADASTRAR = 'Cadastrar';
   readonly NOME_BOTAO_ATUALIZAR = 'Atualizar';
-  // disciplinaEdicao:Disciplina;
   estahCadastrando = true;
   nomeBotao = this.NOME_BOTAO_CADASTRAR;
 
 
   constructor(private roteador: Router,private rotaAtivada: ActivatedRoute,private _disciplinaService:DisciplinaFireStoreService, private _professorService:ProfessorFireStoreService) {
+    this.disciplinaTratamento = new Disciplina('');
     const idEdicao = this.rotaAtivada.snapshot.params['id'];
     if(idEdicao){
       this.estahCadastrando = false;
       this._disciplinaService.pesquisarPorId(idEdicao).subscribe(disciplinaRetornada => {
         this.disciplinaTratamento = disciplinaRetornada;
+        this.originalDisciplina = { ...disciplinaRetornada };
+        this.inicializarProfessorSelecionado();
       })
     }
-
-    this.disciplinaTratamento = new Disciplina('');
     this.nomeBotao = this.estahCadastrando ? this.NOME_BOTAO_CADASTRAR : this.NOME_BOTAO_ATUALIZAR;
   }
+
+  inicializarProfessorSelecionado() {
+    if (this.professores && this.disciplinaTratamento && this.disciplinaTratamento.professorResponsavel) {
+      this.selectProfessor = this.professores.find(p => p.nome === this.disciplinaTratamento.professorResponsavel);
+    }
+  }
+
   cadastrar():void{
 
     if(this.estahCadastrando){
       if(this.selectProfessor && this.selectProfessor.nome && this.disciplinaTratamento.nome){
-      this.disciplinaTratamento.professorResponsavel = this.selectProfessor.nome;
-        this.selectProfessor?.turmasEncarregadas?.push(this.disciplinaTratamento.nome);
-        this._professorService.atualizar(this.selectProfessor);
+        this.disciplinaTratamento.professorResponsavel = this.selectProfessor.nome;
+        this.selectProfessor.turmasEncarregadas = this.selectProfessor.turmasEncarregadas || [];
+        if (!this.selectProfessor.turmasEncarregadas.includes(this.disciplinaTratamento.nome)) {
+          this.selectProfessor.turmasEncarregadas.push(this.disciplinaTratamento.nome);
+        }
+        this._professorService.atualizar(this.selectProfessor).subscribe();
       }
 
       this._disciplinaService.inserir(this.disciplinaTratamento).subscribe(
@@ -57,13 +68,52 @@ export class DisciplinaManterComponent {
       )
 
     }else{
-      if(this.selectProfessor && this.selectProfessor.nome){
-      this.disciplinaTratamento.professorResponsavel = this.selectProfessor.nome;
+      const oldProfName = this.originalDisciplina?.professorResponsavel;
+      const oldDiscName = this.originalDisciplina?.nome;
+      const newProfName = this.selectProfessor?.nome;
+      const newDiscName = this.disciplinaTratamento.nome;
 
+      if(newProfName){
+        this.disciplinaTratamento.professorResponsavel = newProfName;
       }
+
+      if(oldDiscName && newDiscName){
+        if(oldProfName !== newProfName){
+          if(oldProfName){
+            this._professorService.listar().subscribe(professores => {
+              const oldProf = professores.find(p => p.nome === oldProfName);
+              if (oldProf && oldProf.turmasEncarregadas) {
+                const idx = oldProf.turmasEncarregadas.indexOf(oldDiscName);
+                if (idx > -1) {
+                  oldProf.turmasEncarregadas.splice(idx, 1);
+                  this._professorService.atualizar(oldProf).subscribe();
+                }
+              }
+            });
+          }
+          if(this.selectProfessor){
+            this.selectProfessor.turmasEncarregadas = this.selectProfessor.turmasEncarregadas || [];
+            if (!this.selectProfessor.turmasEncarregadas.includes(newDiscName)) {
+              this.selectProfessor.turmasEncarregadas.push(newDiscName);
+            }
+            this._professorService.atualizar(this.selectProfessor).subscribe();
+          }
+        } else {
+          if (oldDiscName !== newDiscName && this.selectProfessor) {
+            this.selectProfessor.turmasEncarregadas = this.selectProfessor.turmasEncarregadas || [];
+            const idx = this.selectProfessor.turmasEncarregadas.indexOf(oldDiscName);
+            if (idx > -1) {
+              this.selectProfessor.turmasEncarregadas[idx] = newDiscName;
+            } else {
+              this.selectProfessor.turmasEncarregadas.push(newDiscName);
+            }
+            this._professorService.atualizar(this.selectProfessor).subscribe();
+          }
+        }
+      }
+
       this._disciplinaService.atualizar(this.disciplinaTratamento).subscribe(disciplina =>{
         this.roteador.navigate(["listagem-disciplina"])
-
       })
     }
 
@@ -77,12 +127,10 @@ export class DisciplinaManterComponent {
       }
     );
 
-
-
-
     this._professorService.listar().subscribe(professoresRetornados =>
       {
         this.professores = professoresRetornados;
+        this.inicializarProfessorSelecionado();
       }
     );
 

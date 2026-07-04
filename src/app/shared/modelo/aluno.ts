@@ -14,7 +14,7 @@ export class Aluno {
    this.senha = aluno.senha;
    this.nome = aluno.nome;
    this.matricula = aluno.matricula;
-   this.turmasMatriculado = []
+   this.turmasMatriculado = aluno.turmasMatriculado || [];
   }
 }
 
