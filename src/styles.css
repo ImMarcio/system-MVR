@@ -1,4 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', sans-serif !important;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+/* Material component overrides for a premium feel */
+.mat-toolbar.mat-primary {
+  background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.mat-sidenav-container {
+  height: calc(100vh - 64px) !important;
+  background-color: #f3f4f6 !important;
+}
+
+.mat-sidenav {
+  border-right: none !important;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+  background: #ffffff !important;
+  padding: 16px 8px;
+}
+
+/* Navigation Buttons */
+.buttonSideNav {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 12px 16px !important;
+  margin: 4px 0 !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  color: #4b5563 !important;
+  transition: all 0.2s ease-in-out !important;
+  background: transparent !important;
+}
+
+.buttonSideNav:hover {
+  background: #f3f4f6 !important;
+  color: #4f46e5 !important;
+  transform: translateX(4px);
+}
+
+.buttonSideNav mat-icon {
+  margin-right: 12px !important;
+}
+
+/* Custom Cards style */
+mat-card {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.025) !important;
+  border: 1px solid rgba(229, 231, 235, 0.5) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+mat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Forms styling */
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 16px !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: #f9fafb !important;
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-underline {
+  display: none !important;
+}
+
+.user-name {
+  margin-right: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
