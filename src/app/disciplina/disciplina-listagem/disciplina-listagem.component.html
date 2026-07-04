@@ -1,22 +1,42 @@
 <div class="ngfor-container">
   <mat-card class="mat-card-simples" *ngFor="let disciplina of disciplinas">
-    <mat-card-header>
-      <mat-card-title>
-        <mat-icon>school</mat-icon>{{disciplina.nome}} - {{disciplina.professorResponsavel}}
-      </mat-card-title>
-      <mat-card-subtitle *ngIf="disciplina.id">{{disciplina.semestre}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>{{disciplina.descricao}}
-    <mat-card class="aluno-label" *ngFor="let aluno of disciplina.alunosMatriculados">
-      {{aluno}}
-    </mat-card>
-    </mat-card-content>
+    <div>
+      <mat-card-header style="padding: 0;">
+        <mat-card-title class="card-title-container">
+          <mat-icon class="card-icon">school</mat-icon>
+          <span>{{disciplina.nome}}</span>
+        </mat-card-title>
+        <mat-card-subtitle *ngIf="disciplina.id" style="margin-left: 34px;">
+          Semestre: {{disciplina.semestre}}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <div class="professor-label" style="margin-left: 34px;">
+        <mat-icon style="font-size: 16px; width: 16px; height: 16px;">person</mat-icon>
+        <span>Professor: {{disciplina.professorResponsavel || 'Não atribuído'}}</span>
+      </div>
+
+      <mat-card-content style="padding: 0 0 0 34px;">
+        <p class="desc-text">{{disciplina.descricao || 'Sem descrição cadastrada.'}}</p>
+
+        <div class="student-section" *ngIf="disciplina.alunosMatriculados && disciplina.alunosMatriculados.length > 0">
+          <h4 class="student-section-title">Alunos Matriculados ({{disciplina.alunosMatriculados.length}})</h4>
+          <div class="students-list">
+            <mat-card class="aluno-chip" *ngFor="let aluno of disciplina.alunosMatriculados">
+              {{aluno}}
+            </mat-card>
+          </div>
+        </div>
+      </mat-card-content>
+    </div>
+
     <mat-card-actions>
-      <button mat-raised-button (click)="excluirDisciplina(disciplina)"> <mat-icon>delete</mat-icon> </button>
-      <button mat-icon-button (click)="editarDisciplina(disciplina)">
+      <button mat-icon-button class="btn-edit" (click)="editarDisciplina(disciplina)" title="Editar Disciplina">
         <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-flat-button class="btn-delete" (click)="excluirDisciplina(disciplina)" title="Excluir Disciplina">
+        <mat-icon>delete</mat-icon> Excluir
       </button>
     </mat-card-actions>
   </mat-card>
-
 </div>

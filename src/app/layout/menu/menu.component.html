@@ -9,6 +9,11 @@
     <button mat-button class="example-icon" routerLink="entrar-disciplina" *ngIf="alunoEstaLogado"> 
       <mat-icon>add</mat-icon> Matricular-se
     </button>
+    
+    <button mat-icon-button class="example-icon" (click)="toggleTheme()" title="Alternar Tema">
+      <mat-icon>{{ isDark ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
     <button mat-icon-button class="example-icon" *ngIf="alunoEstaLogado" (click)="deslogar()" title="Sair">
       <mat-icon>logout</mat-icon>
     </button>

@@ -11,6 +11,7 @@ import {AlunoCrudService} from "../../aluno/aluno-crud.service";
 import {AlunoLogadoService} from "../login/aluno-logado.service";
 import {AlunoFireStoreService} from "../../shared/services/aluno-fire-store.service";
 import {DisciplinaFireStoreService} from "../../shared/services/disciplina-fire-store.service";
+import {ThemeService} from "../../shared/services/theme.service";
 
 @Component({
   selector: 'app-menu',
@@ -27,8 +28,17 @@ export class MenuComponent {
     private _alunoService:AlunoCrudService,
     private alunoFire:AlunoFireStoreService,
     private alunoLogadoService:AlunoLogadoService,
-    private roteador: Router
+    private roteador: Router,
+    private themeService: ThemeService
   ) {}
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
+
+  get isDark(): boolean {
+    return this.themeService.isDarkTheme();
+  }
 
   get alunoPrincipal(): Aluno {
     return this.alunoLogadoService.getCurrentStudent();

@@ -1,3 +1,25 @@
+:root {
+  /* Light Theme Variables */
+  --bg-primary: #f3f4f6;
+  --bg-card: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+  --accent-color: #6366f1;
+}
+
+body.dark-theme {
+  /* Dark Theme Variables */
+  --bg-primary: #0f172a;
+  --bg-card: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+  --accent-color: #818cf8;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 html, body {
@@ -7,13 +29,14 @@ html, body {
 body {
   margin: 0;
   font-family: 'Outfit', sans-serif !important;
-  background-color: #f3f4f6;
-  color: #1f2937;
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Material component overrides for a premium feel */
 .mat-toolbar.mat-primary {
-  background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%) !important;
+  background: var(--primary-gradient) !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -21,13 +44,13 @@ body {
 
 .mat-sidenav-container {
   height: calc(100vh - 64px) !important;
-  background-color: #f3f4f6 !important;
+  background-color: var(--bg-primary) !important;
 }
 
 .mat-sidenav {
   border-right: none !important;
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
-  background: #ffffff !important;
+  background: var(--bg-card) !important;
   padding: 16px 8px;
 }
 
@@ -42,14 +65,14 @@ body {
   font-size: 14px !important;
   font-weight: 500 !important;
   text-align: left !important;
-  color: #4b5563 !important;
+  color: var(--text-secondary) !important;
   transition: all 0.2s ease-in-out !important;
   background: transparent !important;
 }
 
 .buttonSideNav:hover {
-  background: #f3f4f6 !important;
-  color: #4f46e5 !important;
+  background: var(--bg-primary) !important;
+  color: var(--accent-color) !important;
   transform: translateX(4px);
 }
 
@@ -59,9 +82,11 @@ body {
 
 /* Custom Cards style */
 mat-card {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.025) !important;
-  border: 1px solid rgba(229, 231, 235, 0.5) !important;
+  border: 1px solid var(--border-color) !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -75,14 +100,14 @@ mat-card:hover {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f3f4f6;
+  background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--border-color);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--text-secondary);
 }
 
 /* Forms styling */
@@ -92,9 +117,9 @@ mat-card:hover {
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color: #f9fafb !important;
+  background-color: var(--bg-primary) !important;
   border-radius: 8px !important;
-  border: 1px solid #e5e7eb !important;
+  border: 1px solid var(--border-color) !important;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-underline {
@@ -107,4 +132,3 @@ mat-card:hover {
   font-weight: 500;
   opacity: 0.9;
 }
-

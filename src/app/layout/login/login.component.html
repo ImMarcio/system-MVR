@@ -1,42 +1,76 @@
-<main class="main-card">
-
-  <section class="secao">
-    <div>
-      <mat-icon class="icon">school</mat-icon>
-      <div>
-        <h1>Ensino e eprendizagem a distância </h1>
-        <p>Suas salas de aulas em todo lugar que você for!</p>
-        <div class="button-main">
-            <button mat-flat-button color="primary" mat-button  (click)="openLive()">Fazer Login</button>
-          <button mat-flat-button color="primary" mat-button  (click)="openRegister()">Fazer Cadastro</button>
-        </div>
+<main class="login-container">
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="hero-icon-container">
+        <mat-icon class="hero-icon">school</mat-icon>
       </div>
+      <h1 class="hero-title">Ensino e aprendizagem a distância</h1>
+      <p class="hero-subtitle">Suas salas de aula em todo lugar que você for!</p>
+      
+      <div class="hero-actions">
+        <button mat-raised-button color="primary" class="btn-primary" (click)="openLive()">
+          <mat-icon>login</mat-icon> Entrar no Sistema
+        </button>
+        <button mat-stroked-button color="primary" class="btn-secondary" (click)="openRegister()">
+          <mat-icon>person_add</mat-icon> Criar Conta
+        </button>
+      </div>
+    </div>
+  </header>
 
+  <section class="benefits-section">
+    <h2 class="section-title">Por que usar as Salas Virtuais?</h2>
+    
+    <div class="benefits-grid">
+      <mat-card class="benefit-card">
+        <div class="benefit-icon-wrapper">
+          <mat-icon>widgets</mat-icon>
+        </div>
+        <mat-card-header>
+          <mat-card-title>Flexibilidade</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          Oferecemos ferramentas e recursos modulares para adaptar o ambiente de aprendizado de acordo com as necessidades de cada usuário.
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="benefit-card">
+        <div class="benefit-icon-wrapper">
+          <mat-icon>architecture</mat-icon>
+        </div>
+        <mat-card-header>
+          <mat-card-title>Organização</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          Estrutura e organização intuitivas, destacando uma base sólida para navegação fácil e disposição de conteúdos inteligente.
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="benefit-card">
+        <div class="benefit-icon-wrapper">
+          <mat-icon>groups</mat-icon>
+        </div>
+        <mat-card-header>
+          <mat-card-title>Colaboração</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          Interação dinâmica entre os usuários. Forme comunidades de estudo, participe de discussões produtivas e trabalhe em grupo.
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="benefit-card">
+        <div class="benefit-icon-wrapper">
+          <mat-icon>phone_android</mat-icon>
+        </div>
+        <mat-card-header>
+          <mat-card-title>Acessibilidade</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          Acesse facilmente todos os seus recursos educacionais de qualquer lugar, com suporte completo para smartphones e tablets.
+        </mat-card-content>
+      </mat-card>
     </div>
   </section>
-  <div class="benefits">
-    <mat-card class="example-benefits">
-      <mat-icon>widgets</mat-icon>
-      <mat-card-title>flexibilidade</mat-card-title>
-      <mat-card-content> flexibilidade da plataforma, oferecendo ferramentas e recursos modulares para adaptar o ambiente de aprendizado de acordo com as necessidades individuais do usuário. </mat-card-content>
-    </mat-card>
-    <mat-card class="example-benefits">
-      <mat-icon >architecture</mat-icon>
-      <mat-card-title>Organização</mat-card-title>
-      <mat-card-content> estrutura e organização da plataforma de ensino, destacando sua base sólida, design intuitivo e a maneira como os conteúdos são organizados</mat-card-content>
-    </mat-card>
-    <mat-card class="example-benefits">
-      <mat-icon>groups</mat-icon>
-      <mat-card-title>Grupos</mat-card-title>
-      <mat-card-content> colaboração e interação entre os usuários na plataforma. Representa a capacidade de formar comunidades, participar de discussões e trabalhar em conjunto por meio de grupos temáticos </mat-card-content>
-    </mat-card>
-    <mat-card class="example-benefits">
-      <mat-icon> phone_android</mat-icon>
-      <mat-card-title>Acessibilidade</mat-card-title>
-      <mat-card-content>acessibilidade e a compatibilidade da plataforma com dispositivos móveis. Indica a capacidade de acessar facilmente os recursos educacionais através de smartphones e tablets Android.</mat-card-content>
-    </mat-card>
-
-  </div>
 </main>
 
 

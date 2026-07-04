@@ -1,13 +1,13 @@
 <div class="ngfor-container">
   <mat-card class="mat-card-simples" *ngFor="let disciplina of disciplinasMatriculado">
-    <mat-card-header>
-      <mat-card-title>
-        {{disciplina}}
-      </mat-card-title>
-      <mat-icon>school</mat-icon>
-    </mat-card-header>
+    <div class="card-header-custom">
+      <h3 class="card-title-custom">{{disciplina}}</h3>
+      <mat-icon class="card-icon-custom">school</mat-icon>
+    </div>
     <mat-card-actions>
-      <button mat-raised-button (click)="cancelarIncricao(disciplina)"><mat-icon>delete</mat-icon></button>
+      <button mat-flat-button class="btn-delete" (click)="cancelarIncricao(disciplina)" title="Cancelar Inscrição">
+        <mat-icon>delete</mat-icon> Cancelar
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

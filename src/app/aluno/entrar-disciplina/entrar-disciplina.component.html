@@ -1,13 +1,30 @@
 
-<mat-card class="mat-card-principal">
-<mat-form-field class="mat-form-field">
-  <mat-label>Disciplinas</mat-label>
-  <mat-select  [(value)]="selectDisciplina">
-    <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina">{{disciplina.nome}}</mat-option>
-  </mat-select>
-</mat-form-field>
-  <mat-card-actions>
-    <button class="primary" mat-button (click)="entrarDisciplina()"> Se Inscrever</button>
-  </mat-card-actions>
-  <div class="message-box"> {{messageBox}}</div>
-</mat-card>
+<div class="container">
+  <mat-card class="mat-card-principal">
+    <mat-card-header style="padding: 0; margin-bottom: 24px;">
+      <mat-card-title style="font-size: 20px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+        <mat-icon style="color: var(--accent-color);">add_circle</mat-icon>
+        <span>Matricular-se em Disciplina</span>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-form-field appearance="fill" class="mat-form-field">
+      <mat-label>Selecione a Disciplina</mat-label>
+      <mat-select [(value)]="selectDisciplina">
+        <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina">
+          {{disciplina.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-card-actions>
+      <button mat-flat-button color="primary" (click)="entrarDisciplina()">
+        Matricular-se
+      </button>
+    </mat-card-actions>
+    
+    <div class="message-box" *ngIf="messageBox">
+      {{messageBox}}
+    </div>
+  </mat-card>
+</div>

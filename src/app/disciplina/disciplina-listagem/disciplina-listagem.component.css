@@ -1,44 +1,98 @@
-.body{
-  background-image: url("https://static.vecteezy.com/ti/vetor-gratis/t2/11154633-de-volta-ao-fundo-da-escola-gratis-vetor.jpg");
-}
-
-editClass{
-  background-color: forestgreen;
-}
-
-
 .ngfor-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 16px 0;
+  width: 100%;
 }
 
-.mat-card-simples{
-  max-width: 300px;
-  max-height: 300px;
-  color: #ffffff;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  background-color: #3F76B5;
-}
-
-.ngfor-container{
-  display:flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-
-}
 .mat-card-simples {
-  width: 80%; /* Largura desejada */
-  margin-bottom: 10px; /* Espaço entre os cartões simples */
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px;
+  padding: 24px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
 }
 
+.card-title-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-.aluno-label{
-  color: #333333;
-  width: fit-content;
-  margin: 5px;
+.card-icon {
+  color: var(--accent-color);
+}
 
+.professor-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+.desc-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.student-section {
+  margin-top: 8px;
+}
+
+.student-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.students-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.aluno-chip {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  font-size: 11px !important;
+  padding: 4px 10px !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  border: 1px solid var(--border-color) !important;
+  margin: 0 !important;
+}
+
+.mat-card-simples mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 0;
+}
+
+.btn-edit {
+  color: var(--accent-color) !important;
+}
+
+.btn-delete {
+  background-color: #ef4444 !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+.btn-delete:hover {
+  background-color: #dc2626 !important;
 }
